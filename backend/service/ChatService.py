@@ -10,11 +10,18 @@ from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmb
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from pathlib import Path
 from model.Chat import ProfileChat
+from langchain.globals import set_llm_cache
+from langchain_community.cache import SQLiteCache
+
+set_llm_cache(SQLiteCache(database_path=".profile.db"))
 
 
 class ChatService(ChatRepository):
     def __init__(self):
         self.chat = ProfileChat()
+        self.persist_dir = Path(__file__).parent.parent / 'data' / 'profile_information'
+        self.persist_dir.mkdir(parents=True, exist_ok=True)
+        self.collection_name = "profile_information"
 
     def _get_model(self):
         return ChatGoogleGenerativeAI(
@@ -24,6 +31,18 @@ class ChatService(ChatRepository):
     
     def _get_context(self, path):
         loader = PyPDFLoader(path)
+
+        try:
+            vector_store = Chroma(
+                embedding_function=embedding,
+                collection_name=self.collection_name,
+                persist_directory=str(self.persist_dir)
+            )
+            if len(vector_store.get()["ids"]) > 0:
+                return vector_store.as_retriever()
+        except Exception:
+            pass
+
 
         docs = loader.load()
 
@@ -42,6 +61,7 @@ class ChatService(ChatRepository):
             documents=chunks,
             embedding=embedding,
             collection_name="profile_information",
+            persist_directory=str(self.persist_dir)
         )
 
         return vector_store.as_retriever()
