@@ -27,3 +27,6 @@ dist-ssr
 .venv
 
 node_modules
+
+*.db*
+*.sqlite*
