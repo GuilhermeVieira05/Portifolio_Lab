@@ -26,18 +26,19 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
     return (
         <Modal open={open} onClose={handleClose} aria-labelledby="modal-title">
             <Box sx={modalStyle} >
-                {/* Imagem ou Vídeo no topo */}
                 {project.video ? (
                     <Box
-                        component="video"
+                        component="img"
                         src={project.video}
-                        autoPlay
-                        muted
-                        loop
+                        // autoPlay
+                        // muted
+                        // loop
+                        loading="lazy"
+                        decoding="async"
                         sx={{
                             width: "100%",
-                            maxHeight: 300,
-                            objectFit: "cover"
+                            maxHeight: 400,
+                            objectFit: "revert",
                         }}
                     />
                 ) : (
@@ -47,8 +48,8 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
                         alt={project.title}
                         sx={{
                             width: "100%",
-                            maxHeight: 300,
-                            objectFit: "cover"
+                            maxHeight: 400,
+                            objectFit: "revert"
                         }}
                     />
                 )}
