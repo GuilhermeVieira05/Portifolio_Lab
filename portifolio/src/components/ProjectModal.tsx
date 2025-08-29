@@ -28,17 +28,20 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
             <Box sx={modalStyle} >
                 {project.video ? (
                     <Box
-                        component="img"
+                        component="video"
                         src={project.video}
-                        // autoPlay
-                        // muted
-                        // loop
-                        loading="lazy"
-                        decoding="async"
+                        autoPlay
+                        muted
+                        loop
+                         playsInline
+                        preload="metadata"
                         sx={{
                             width: "100%",
                             maxHeight: 400,
-                            objectFit: "revert",
+                            objectFit: "cover",
+                            aspectRatio: "16 / 9",
+                            borderRadius: 2,
+                            display: "block"
                         }}
                     />
                 ) : (

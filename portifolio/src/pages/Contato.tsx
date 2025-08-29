@@ -16,7 +16,6 @@ export const Contato: React.FC = () => {
                     bgcolor: "#2c2c2c",
                     color: "text.primary",
                     scrollBehavior: "smooth",
-                    //backgroundImage: `url(${fundo})`
                 }}
             >
                 <Header />

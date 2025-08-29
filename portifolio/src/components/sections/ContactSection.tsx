@@ -67,7 +67,6 @@ export const ContactSection: React.FC = () => {
         },
         flex: 1,
         position: "relative",
-        //backgroundImage: `url(${fundo})`,
         display: "flex",
         justifyContent: "center",
         gap: { xs: 0, sm: 4 },

@@ -1,11 +1,17 @@
-import type { CardType } from "../Types/cardType";
-import testeVideo from '../assets/testeVideo.mp4'
-import bbf from "../assets/gif/bbf.gif"
-import gagro from "../assets/gif/gagro.gif"
-import optima from "../assets/gif/optima.gif"
-import tradutor from "../assets/projectsImages/tradutor.png"
-import ComingSoon from "../assets/projectsImages/ComingSoon.png"
-import gagroImg from "../assets/projectsImages/gagro.png"
+import type {CardType}  from "../Types/cardType";
+import bbf              from "../assets/videos/bbf.mp4"
+import gagro            from "../assets/videos/gagro.mp4"
+import optima           from "../assets/videos/optima.mp4"
+import tradutor         from "../assets/projectsImages/tradutor.png"
+import ComingSoon       from "../assets/projectsImages/ComingSoon.jpg"
+import gagroImg         from "../assets/projectsImages/gagro.png"
+import OptimaImg        from "../assets/projectsImages/Optima.jpg"
+import voogle           from "../assets/videos/voogle.mp4"
+import voogleImg        from "../assets/projectsImages/Voogle.png"
+import tradutorIa       from "../assets/videos/tradutorIA.mp4"
+import bbfImages        from "../assets/projectsImages/bbf.png"
+import portifolio       from "../assets/projectsImages/portifolio.png"
+import portifolioVideo  from "../assets/videos/portifolio.mp4"
 
 export const projects: CardType[] = [
   {
@@ -20,7 +26,7 @@ export const projects: CardType[] = [
     date: '01/05/2023',
     siteLink: '',
     gitHubLink: 'https://github.com/GuilhermeVieira05/Tradutor_IA',
-    video: testeVideo
+    video: tradutorIa
   },
   {
     id: "2",
@@ -40,9 +46,10 @@ export const projects: CardType[] = [
     languages: ["React", "TypeScript", "Langchain", "Gemini", "Python", "Fast API", "Material UI"],
     type: "projects.types.sites",
     status: "projects.status.done",
-    image: "https://picsum.photos/seed/habits-app/800/600",
+    image: portifolio,
     highlight: true,
-    date: '01/05/2023'
+    date: '01/05/2023',
+    video: portifolioVideo
   },
   {
     id: "4",
@@ -62,7 +69,7 @@ export const projects: CardType[] = [
     languages: ["HTML5", "CSS3", "JavaScript"],
     type: "projects.types.sites",
     status: "projects.status.done",
-    image: "https://picsum.photos/seed/metrics-dashboard/800/600",
+    image: bbfImages,
     date: '01/05/2023',
     video: bbf
   },
@@ -73,7 +80,7 @@ export const projects: CardType[] = [
     languages: ["Next.Js", "SCSS", "TypeScript", "Node.js", "Express.js", "Prisma", "PostgreSQL"],
     type: "projects.types.sites",
     status: "projects.status.done",
-    image: "https://picsum.photos/seed/tech-conf-landing/800/600",
+    image: OptimaImg,
     date: '01/05/2023',
     video: optima
   },
@@ -104,7 +111,8 @@ export const projects: CardType[] = [
     languages: ["React", "Tailwind", "TypeScript"],
     type: "projects.types.landing",
     status: "projects.status.done",
-    image: "https://picsum.photos/seed/tech-conf-landing/800/600",
-    date: '01/05/2023'
+    image: voogleImg,
+    date: '01/05/2023',
+    video: voogle
   }
 ];
