@@ -5,6 +5,7 @@ import { Habilidades } from "./pages/Habilidades";
 import { Projetos } from "./pages/Projetos";
 import { Contato } from "./pages/Contato";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Certificados } from "./pages/Certificados";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/habilidades" element={<Habilidades />} />
             <Route path="/projetos" element={<Projetos />} />
+            <Route path="/certificados" element={<Certificados />} />
             <Route path="/contato" element={<Contato />} />
           </Routes>
 

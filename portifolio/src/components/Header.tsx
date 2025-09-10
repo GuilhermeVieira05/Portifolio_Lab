@@ -24,6 +24,7 @@ export const Header = () => {
     { label: t("header.sobre"), path: "/sobre", key: "about" },
     { label: t("header.habilidades"), path: "/habilidades", key: "skills" },
     { label: t("header.projetos"), path: "/projetos", key: "projects" },
+    { label: t("header.certificados"), path: "/certificados", key: "certificates" },
     { label: t("header.contato"), path: "/contato", key: "contact" },
   ];
 
