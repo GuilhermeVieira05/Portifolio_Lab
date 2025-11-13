@@ -158,6 +158,12 @@
             "empresa": "Santa Helena",
             "descricao": "Fui o coordenador da Perseverança da Obra Jovem Santa Helena, responsável pela catequização e formação de jovens católicos.",
             "tipo": "Voluntariado"
+        },
+        "experiencia07": {
+            "papel": "Estagiário de Desenvolvimento",
+            "empresa": "NetAdmin",
+            "descricao": "",
+            "tipo": "Trabalho"
         }
     },
     "projects": {

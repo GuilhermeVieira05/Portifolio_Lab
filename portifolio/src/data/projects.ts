@@ -15,6 +15,16 @@ import portifolioVideo  from "../assets/videos/portifolio.mp4"
 
 export const projects: CardType[] = [
   {
+    id: "8",
+    title: "projects.Ajunta.title",
+    description: "projects.Ajunta.description",
+    languages: ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Aws", "Docker", "Python", "WebSocket", "API-Gateway", "Tailwind", "RabbitMQ"],
+    type: "projects.types.sites",
+    status: "projects.status.inProgress",
+    image: ComingSoon,
+    date: '01/05/2023'
+  },
+  {
     id: "1",
     title: "projects.tradutorIA.title",
     description: "projects.tradutorIA.description",
@@ -90,16 +100,6 @@ export const projects: CardType[] = [
     description: "projects.Ecommerce.description",
     languages: ["HTML5", "CSS3", "JavaScript", "GSAP"],
     type: "projects.types.ecommerce",
-    status: "projects.status.inProgress",
-    image: ComingSoon,
-    date: '01/05/2023'
-  },
-  {
-    id: "8",
-    title: "projects.Ajunta.title",
-    description: "projects.Ajunta.description",
-    languages: ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Redis", "Aws", "Docker"],
-    type: "projects.types.sites",
     status: "projects.status.inProgress",
     image: ComingSoon,
     date: '01/05/2023'

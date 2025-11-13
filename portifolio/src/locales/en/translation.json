@@ -158,6 +158,12 @@
             "empresa": "Santa Helena",
             "descricao": "I was the Perseverance Coordinator of Obra Jovem Santa Helena, responsible for catechism and the formation of young Catholics.",
             "tipo": "Volunteering"
+        },
+        "experiencia07": {
+            "papel": "Developer Internship",
+            "empresa": "NetAdmin",
+            "descricao": "",
+            "tipo": "Work"
         }
     },
     "projects": {

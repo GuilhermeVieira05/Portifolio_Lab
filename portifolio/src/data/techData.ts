@@ -1,6 +1,6 @@
 import type { ElementType } from "react";
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiPrisma, SiPostgresql, SiMongodb, SiDocker, SiGit, SiGithub, SiTailwindcss, SiMui, SiFigma, SiJest, SiVite, SiExpo, SiLinux, SiVercel, SiLangchain, SiPython, SiOpenai, SiGooglegemini, SiPhp, SiDjango, SiSpringboot } from "react-icons/si";
-import { FaGolang, FaJava } from "react-icons/fa6";
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiPrisma, SiPostgresql, SiMongodb, SiDocker, SiGit, SiGithub, SiTailwindcss, SiMui, SiFigma, SiVite, SiExpo, SiLinux, SiVercel, SiLangchain, SiPython, SiOpenai, SiGooglegemini, SiPhp, SiDjango, SiSpringboot, SiRabbitmq, SiPytest, SiNeo4J } from "react-icons/si";
+import { FaAws, FaGolang, FaJava } from "react-icons/fa6";
 import { BiVector } from "react-icons/bi";
 
 // Categorias suportadas
@@ -151,6 +151,15 @@ export const skills: SkillItem[] = [
     ariaLabel: "Prisma ORM",
     category: "Backend",
   },
+  // Other
+  {
+    name: "RabbitMQ",
+    icon: SiRabbitmq,
+    color: "#F60",
+    bg: "#FFF3E0",
+    ariaLabel: "RabbitMQ",
+    category: "Outros",
+  },
 
   // Database
   {
@@ -175,6 +184,14 @@ export const skills: SkillItem[] = [
     color: "#000000",
     bg: gray200,
     ariaLabel: "ChromaDB",
+    category: "Database",
+  },
+  {
+    name: "Neo4j",
+    icon: SiNeo4J,
+    color: "#000000",
+    bg: gray200,
+    ariaLabel: "Neo4j",
     category: "Database",
   },
 
@@ -206,6 +223,14 @@ export const skills: SkillItem[] = [
     category: "DevOps",
   },
   {
+    name: "AWS",
+    icon: FaAws,
+    color: "#000000",
+    bg: gray200,
+    ariaLabel: "AWS",
+    category: "DevOps",
+  },
+  {
     name: "Linux",
     icon: SiLinux,
     color: "#000000",
@@ -223,11 +248,11 @@ export const skills: SkillItem[] = [
   },
   // Testing
   {
-    name: "Jest",
-    icon: SiJest,
-    color: "#C21325",
-    bg: "#FFEBEE",
-    ariaLabel: "Jest",
+    name: "Pytest",
+    icon: SiPytest,
+    color: "#000000",
+    bg: "#E3F2FD",
+    ariaLabel: "Pytest",
     category: "Testing",
   },
   // Design
@@ -290,5 +315,5 @@ export const skills: SkillItem[] = [
     bg: "#EDE7F6",
     ariaLabel: "Vite",
     category: "Tools",
-  },
+  }
 ];

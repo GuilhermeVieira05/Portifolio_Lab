@@ -2,6 +2,14 @@ import type { ExperienceType } from "../Types/ExperienceType.js";
 
 export const experienceData: ExperienceType[] = [
   {
+    role: "experiencias.experiencia07.papel",
+    company: "experiencias.experiencia07.empresa",
+    startDate: "11/2025",
+    finalDate: null,
+    description: "experiencias.experiencia07.descricao",
+    type: "experiencias.experiencia07.tipo",
+  },
+  {
     role: "experiencias.experiencia01.papel",
     company: "experiencias.experiencia01.empresa",
     startDate: "08/2025",
@@ -13,7 +21,7 @@ export const experienceData: ExperienceType[] = [
     role: "experiencias.experiencia02.papel",
     company: "experiencias.experiencia02.empresa",
     startDate: "02/2025",
-    finalDate: null,
+    finalDate: "11/2025",
     description: "experiencias.experiencia02.descricao",
     type: "experiencias.experiencia02.tipo",
   },
@@ -48,5 +56,5 @@ export const experienceData: ExperienceType[] = [
     finalDate: "01/2025",
     description: "experiencias.experiencia06.descricao",
     type: "experiencias.experiencia06.tipo",
-  },
+  }
 ];
