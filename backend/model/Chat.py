@@ -9,7 +9,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
 
 class ProfileChat: 
-    def __init__(self, model='gemini-2.5-pro', embedding_model='gemini-embedding-001'):
+    def __init__(self, model='gemini-2.5-flash', embedding_model='gemini-embedding-001'):
         load_dotenv()
         self.google_api_key = os.environ["GEMINI_API_KEY"]
         self.model = model
