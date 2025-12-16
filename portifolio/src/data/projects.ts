@@ -12,17 +12,20 @@ import tradutorIa       from "../assets/videos/tradutorIA.mp4"
 import bbfImages        from "../assets/projectsImages/bbf.png"
 import portifolio       from "../assets/projectsImages/portifolio.png"
 import portifolioVideo  from "../assets/videos/portifolio.mp4"
+import ajuntaImg        from "../assets/projectsImages/login-ajunta.png"
 
 export const projects: CardType[] = [
   {
     id: "8",
     title: "projects.Ajunta.title",
     description: "projects.Ajunta.description",
-    languages: ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Aws", "Docker", "Python", "WebSocket", "API-Gateway", "Tailwind", "RabbitMQ"],
+    languages: ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Aws", "Docker", "Python", "WebSocket", "API-Gateway", "Tailwind", "RabbitMQ", "Terraform"],
     type: "projects.types.sites",
     status: "projects.status.inProgress",
-    image: ComingSoon,
-    date: '01/05/2023'
+    image: ajuntaImg,
+    date: '01/05/2023',
+    siteLink: 'https://tinyurl.com/ajuntaa',
+    gitHubLink: 'https://github.com/GuilhermeVieira05/pmg-es-2025-2-ti4-3170100-ajunta',
   },
   {
     id: "1",

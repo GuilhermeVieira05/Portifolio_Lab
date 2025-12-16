@@ -1,5 +1,5 @@
 import type { ElementType } from "react";
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiPrisma, SiPostgresql, SiMongodb, SiDocker, SiGit, SiGithub, SiTailwindcss, SiMui, SiFigma, SiVite, SiExpo, SiLinux, SiVercel, SiLangchain, SiPython, SiOpenai, SiGooglegemini, SiPhp, SiDjango, SiSpringboot, SiRabbitmq, SiPytest, SiNeo4J } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiPrisma, SiPostgresql, SiMongodb, SiDocker, SiGit, SiGithub, SiTailwindcss, SiMui, SiFigma, SiVite, SiExpo, SiLinux, SiVercel, SiLangchain, SiPython, SiOpenai, SiGooglegemini, SiPhp, SiDjango, SiSpringboot, SiRabbitmq, SiPytest, SiNeo4J, SiTerraform, SiDart, SiFlutter } from "react-icons/si";
 import { FaAws, FaGolang, FaJava } from "react-icons/fa6";
 import { BiVector } from "react-icons/bi";
 
@@ -212,7 +212,21 @@ export const skills: SkillItem[] = [
     ariaLabel: "Expo",
     category: "Mobile",
   },
-
+  {
+    name: "Flutter",
+    icon: SiFlutter,
+    color: "#02569B",
+    bg: "#E3F2FD",
+    ariaLabel: "Flutter",
+    category: "Mobile",
+  },
+  {    name: "Dart",
+    icon: SiDart,
+    color: "#0175C2",
+    bg: "#E3F2FD",
+    ariaLabel: "Dart",
+    category: "Mobile",
+  },
   // DevOps
   {
     name: "Docker",
@@ -244,6 +258,14 @@ export const skills: SkillItem[] = [
     color: "#000000",
     bg: gray200,
     ariaLabel: "Vercel",
+    category: "DevOps",
+  },
+  {
+    name: "Terraform",
+    icon: SiTerraform,
+    color: "#7B42BC",
+    bg: "#EDE7F6",
+    ariaLabel: "Terraform",
     category: "DevOps",
   },
   // Testing
