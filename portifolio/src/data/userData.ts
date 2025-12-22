@@ -6,7 +6,7 @@ export const userData: User = {
     name: "Guilherme Vieira",
     img: profileImg,
     desc: "user.desc",
-    emailName: 'guilhermearv@gmail.com',
+    emailName: 'guilhermearv3@gmail.com',
     linkedinName: 'guilherme-arvieira',
     githubName: 'GuilhermeVieira05',
     links: {

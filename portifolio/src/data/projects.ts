@@ -62,7 +62,8 @@ export const projects: CardType[] = [
     image: portifolio,
     highlight: true,
     date: '01/05/2023',
-    video: portifolioVideo
+    video: portifolioVideo,
+    gitHubLink: "https://github.com/GuilhermeVieira05/Portifolio_Lab"
   },
   {
     id: "4",
