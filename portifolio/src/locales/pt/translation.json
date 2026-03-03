@@ -164,6 +164,12 @@
             "empresa": "NetAdmin",
             "descricao": "",
             "tipo": "Trabalho"
+        },
+        "experiencia08": {
+            "papel":"Desenvolvedor FullStack Junior",
+            "empresa": "Zoppy",
+            "descricao":"Atuo como Desenvolvedor Full Stack na Zoppy, contribuindo para a evolução da plataforma de CRM e automação de marketing focada no varejo.",
+            "tipo": "Trabalho"
         }
     },
     "projects": {

@@ -2,10 +2,18 @@ import type { ExperienceType } from "../Types/ExperienceType.js";
 
 export const experienceData: ExperienceType[] = [
   {
+    role: "experiencias.experiencia08.papel",
+    company: "experiencias.experiencia08.empresa",
+    startDate: "01/2026",
+    finalDate: null,
+    description: "experiencias.experiencia08.descricao",
+    type: "experiencias.experiencia08.tipo",
+  },
+  {
     role: "experiencias.experiencia07.papel",
     company: "experiencias.experiencia07.empresa",
     startDate: "11/2025",
-    finalDate: null,
+    finalDate: "01/2026",
     description: "experiencias.experiencia07.descricao",
     type: "experiencias.experiencia07.tipo",
   },
