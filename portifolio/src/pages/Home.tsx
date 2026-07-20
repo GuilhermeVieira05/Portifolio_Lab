@@ -13,7 +13,7 @@ import { health } from "../api/healthApi.ts";
 import { userData } from "../data/userData.ts";
 import ServicesSection from "../components/sections/ServicesSection.tsx";
 import i18n from "../i18n.ts";
-import { ReactTyped } from "react-typed";
+import { useTypewriter } from "../hooks/useTypewriter";
 
 function isFirstVisitThisSession() {
   return !sessionStorage.getItem('visited_session');
@@ -29,6 +29,14 @@ export const Home: React.FC = () => {
   const user = userData
 
   const palavrasTraduzidas = user.caracteristicas.map((c) => t(c));
+
+  const { text: typedText, started: typedStarted } = useTypewriter(palavrasTraduzidas, {
+    typingSpeed: 70,
+    deletingSpeed: 50,
+    pauseTime: 1500,
+    startDelay: 300,
+    loop: true,
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     if (isFirstVisitThisSession()) {
@@ -91,102 +99,54 @@ export const Home: React.FC = () => {
               </Typography>
 
               {/* Linha 2: "Desenvolvedor " + palavra animada */}
-              {i18n.language === "pt"
-                ? (
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    color="#F5F5F5"
-                    sx={{
-                      fontWeight: 600,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      lineHeight: 1,
-                      gap: 1,
-                      fontSize: { xs: "clamp(1.125rem, 5vw, 2rem)", md: "2rem" },
-                      textShadow: `
+              <Typography
+                variant="h5"
+                component="h2"
+                color="#F5F5F5"
+                sx={{
+                  fontWeight: 600,
+                  display: "flex",
+                  flexDirection: i18n.language === "pt" ? "row" : "row-reverse",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  lineHeight: 1,
+                  gap: 1,
+                  fontSize: { xs: "clamp(1.125rem, 5vw, 2rem)", md: "2rem" },
+                  textShadow: `
       0 0 4px rgba(245, 245, 245, 0.2),
       0 0 8px rgba(245, 245, 245, 0.15)
     `
-                    }}
-                    aria-live="polite"
-                    aria-atomic="true"
-                  >
-                    <Box component="span">{t("home.desenvolvedor")}</Box>
-                      <Box
-                        component="span"
-                        sx={{
-                          fontFamily: "Ubuntu, monospace",
-                          fontWeight: 700,
-                          color: "#36BCF7FF",
-                          textShadow: `
+                }}
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <Box component="span">{t("home.desenvolvedor")}</Box>
+                <Box
+                  component="span"
+                  sx={{
+                    fontFamily: "Ubuntu, monospace",
+                    fontWeight: 700,
+                    color: "#36BCF7FF",
+                    textShadow: `
         0 0 5px rgba(54, 188, 247, 0.7),
         0 0 10px rgba(54, 188, 247, 0.6),
         0 0 20px rgba(54, 188, 247, 0.5),
         0 0 40px rgba(54, 188, 247, 0.4)
       `,
-                        }}
-                      >
-                        <ReactTyped
-                          strings={palavrasTraduzidas}
-                          typeSpeed={70}
-                          backSpeed={50}
-                          backDelay={1500}
-                          loop
-                          showCursor
-                          cursorChar="|"
-                        />
-                      </Box>
-                  </Typography>
-                ) : (
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    color="#F5F5F5"
-                    sx={{
-                      fontWeight: 600,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      lineHeight: 1,
-                      gap: 1,
-                      fontSize: { xs: "clamp(1.125rem, 5vw, 2rem)", md: "2rem" },
-                      textShadow: `
-      0 0 4px rgba(245, 245, 245, 0.2),
-      0 0 8px rgba(245, 245, 245, 0.15)
-    `
-                    }}
-                    aria-live="polite"
-                    aria-atomic="true"
-                  >
-                      <Box
-                        component="span"
-                        sx={{
-                          fontFamily: "Ubuntu, monospace",
-                          fontWeight: 700,
-                          color: "#36BCF7FF",
-                          textShadow: `
-        0 0 5px rgba(54, 188, 247, 0.7),
-        0 0 10px rgba(54, 188, 247, 0.6),
-        0 0 20px rgba(54, 188, 247, 0.5),
-        0 0 40px rgba(54, 188, 247, 0.4)
-      `,
-                        }}
-                      >
-                        <ReactTyped
-                          strings={palavrasTraduzidas}
-                          typeSpeed={70}
-                          backSpeed={50}
-                          backDelay={1500}
-                          loop
-                          showCursor
-                          cursorChar="|"
-                        />
-                      </Box>
-                    <Box component="span">{t("home.desenvolvedor")}</Box>
-                  </Typography>
-                )}
+                    "&::after": {
+                      content: '"|"',
+                      marginLeft: "2px",
+                      opacity: typedStarted ? 1 : 0,
+                      animation: "blink 1s step-end infinite",
+                    },
+                    "@keyframes blink": {
+                      "50%": { opacity: 0 },
+                    },
+                  }}
+                >
+                  {typedText}
+                </Box>
+              </Typography>
 
             </Container>
             <Container maxWidth='sm' sx={{
