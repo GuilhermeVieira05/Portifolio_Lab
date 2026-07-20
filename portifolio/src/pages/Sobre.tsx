@@ -3,8 +3,6 @@ import { Header } from "../components/Header"
 import { AboutSection } from "../components/sections/AboutSection"
 import { ExperienceSection } from "../components/sections/ExperienceSection"
 import Footer from "../components/Footer"
-import profileImg from "../assets/profile.jpeg";
-import { PersonalChat } from "../components/PersonalChat"
 import { EstatitcSection } from "../components/sections/EstatistcSection"
 
 
@@ -30,11 +28,6 @@ export const Sobre: React.FC = () => {
                     <EstatitcSection />
                 </Box>
                 <Footer                />
-                <PersonalChat
-                    avatarUrl={profileImg}
-                    avatarAlt="Foto do meu perfil"
-                    initials="GV"
-                />
             </Box>
         </>
     )

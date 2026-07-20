@@ -2,9 +2,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { Header } from "../components/Header";
-import { PersonalChat } from "../components/PersonalChat";
 import { Footer } from "../components/Footer";
-import profileImg from "../assets/profile.jpeg";
 import Button from "@mui/material/Button";
 import DownloadIcon from '@mui/icons-material/Download';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
@@ -268,12 +266,6 @@ export const Home: React.FC = () => {
       </Box>
 
       <Footer />
-
-      <PersonalChat
-        avatarUrl={profileImg}
-        avatarAlt="Foto do meu perfil"
-        initials="GV"
-      />
     </Box >
   )
 }
