@@ -72,5 +72,5 @@ export function useTypewriter(
 
   const text = safeWords[index]?.slice(0, subIndex) ?? "";
 
-  return { text, deleting, index };
+  return { text, deleting, index, started };
 }
