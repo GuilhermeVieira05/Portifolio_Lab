@@ -2,8 +2,6 @@ import { Box } from "@mui/material"
 import { Header } from "../components/Header"
 import { ContactSection } from "../components/sections/ContactSection"
 import Footer from "../components/Footer"
-import profileImg from "../assets/profile.jpeg";
-import { PersonalChat } from "../components/PersonalChat";
 
 export const Contato: React.FC = () => {
     return (
@@ -23,11 +21,6 @@ export const Contato: React.FC = () => {
                     <ContactSection />
                 </Box>
                 <Footer/>
-                <PersonalChat
-                        avatarUrl={profileImg}
-                        avatarAlt="Foto do meu perfil"
-                        initials="GV"
-                />
             </Box>
         </>
     )

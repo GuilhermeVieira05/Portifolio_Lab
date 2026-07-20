@@ -1,8 +1,6 @@
 import { Box, Container } from "@mui/material"
 import { Header } from "../components/Header"
 import Footer from "../components/Footer"
-import { PersonalChat } from "../components/PersonalChat"
-import profileImg from "../assets/profile.jpeg";
 import { SkillsSection } from "../components/sections/SkillsSection"
 
 export const Habilidades: React.FC = () => {
@@ -25,11 +23,6 @@ export const Habilidades: React.FC = () => {
                     </Container>
                 </Box>
                 <Footer/>
-                <PersonalChat
-                        avatarUrl={profileImg}
-                        avatarAlt="Foto do meu perfil"
-                        initials="GV"
-                />
             </Box>
         </>
     )

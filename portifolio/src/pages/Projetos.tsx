@@ -3,8 +3,6 @@ import type React from "react";
 import { Header } from "../components/Header";
 import { ProjectsSection } from "../components/sections/ProjectsSection";
 import Footer from "../components/Footer";
-import profileImg from "../assets/profile.jpeg";
-import { PersonalChat } from "../components/PersonalChat";
 import { SkillsSection } from "../components/sections/SkillsSection";
 
 
@@ -29,11 +27,6 @@ export const Projetos: React.FC = () => {
           <SkillsSection />
         </Box>
         <Footer />
-        <PersonalChat
-          avatarUrl={profileImg}
-          avatarAlt="Foto do meu perfil"
-          initials="GV"
-        />
       </Box>
     </>
   );
