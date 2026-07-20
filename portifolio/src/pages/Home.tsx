@@ -22,6 +22,15 @@ function markVisitedSession() {
   sessionStorage.setItem('visited_session', '1');
 }
 
+// Matches the timing previously used by react-typed's typeSpeed/backDelay props.
+const HERO_TYPEWRITER_CONFIG = {
+  typingSpeed: 70,
+  deletingSpeed: 50,
+  pauseTime: 1500,
+  startDelay: 300,
+  loop: true,
+};
+
 export const Home: React.FC = () => {
 
   const { t } = useTranslation();
@@ -30,13 +39,7 @@ export const Home: React.FC = () => {
 
   const palavrasTraduzidas = user.caracteristicas.map((c) => t(c));
 
-  const { text: typedText, started: typedStarted } = useTypewriter(palavrasTraduzidas, {
-    typingSpeed: 70,
-    deletingSpeed: 50,
-    pauseTime: 1500,
-    startDelay: 300,
-    loop: true,
-  });
+  const { text: typedText, started: typedStarted } = useTypewriter(palavrasTraduzidas, HERO_TYPEWRITER_CONFIG);
 
   document.addEventListener('DOMContentLoaded', () => {
     if (isFirstVisitThisSession()) {
@@ -98,7 +101,10 @@ export const Home: React.FC = () => {
                 {user.name}
               </Typography>
 
-              {/* Linha 2: "Desenvolvedor " + palavra animada */}
+              {/* Linha 2: "Desenvolvedor " + palavra animada.
+                  Word order (Developer <word> vs <word> Developer) is controlled via
+                  flexDirection, not JSX child order — the fixed-text Box stays first
+                  in the tree for both languages. */}
               <Typography
                 variant="h5"
                 component="h2"
