@@ -22,7 +22,11 @@ export type WriteFileParams = {
  * (experiências, projetos, etc.) — apenas lê/escreve arquivos por caminho.
  */
 export class GitHubContentClient {
-  constructor(private readonly config: GitHubContentClientConfig) {}
+  private readonly config: GitHubContentClientConfig;
+
+  constructor(config: GitHubContentClientConfig) {
+    this.config = config;
+  }
 
   private buildUrl(path: string): string {
     return `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${path}`;
