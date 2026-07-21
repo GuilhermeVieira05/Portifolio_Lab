@@ -68,6 +68,51 @@ git add portifolio/package.json portifolio/package-lock.json portifolio/vitest.c
 git commit -m "chore: add vitest as test runner"
 ```
 
+- [ ] **Step 6: Ampliar `tsconfig.app.json` para cobrir todo o diretório `api/`**
+
+O `tsconfig.app.json` atual só inclui `"api/ping.ts"` individualmente, não o diretório `api/` inteiro. As próximas tasks criam vários arquivos novos sob `api/_lib/` e `api/admin/` que precisam ser cobertos pelo typecheck do projeto (`npx tsc -b --noEmit`), senão erros de tipo nesses arquivos passariam despercebidos.
+
+Em `portifolio/tsconfig.app.json`, trocar:
+
+```json
+  "include": ["src", "api/ping.ts"]
+```
+
+por:
+
+```json
+  "include": ["src", "api"]
+```
+
+- [ ] **Step 7: Confirmar que o typecheck ainda passa com o include ampliado**
+
+```bash
+cd portifolio && npx tsc -b --noEmit
+```
+
+Expected: sem erros (nesta altura só existe `api/ping.ts`, já coberto antes; a mudança apenas amplia o escopo para os arquivos que serão criados nas próximas tasks).
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add portifolio/tsconfig.app.json
+git commit -m "chore: widen tsconfig include to cover the whole api/ directory"
+```
+
+**Nota importante sobre estilo de código nas próximas tasks:** o `tsconfig.app.json` deste projeto tem `"erasableSyntaxOnly": true`, que **proíbe TypeScript parameter properties** (o atalho `constructor(private readonly x: T) {}`). Todo construtor nas classes deste plano deve declarar o campo explicitamente e atribuí-lo no corpo do construtor, por exemplo:
+
+```ts
+export class Example {
+  private readonly config: ExampleConfig;
+
+  constructor(config: ExampleConfig) {
+    this.config = config;
+  }
+}
+```
+
+Os blocos de código nas próximas tasks já foram escritos seguindo esse padrão.
+
 ---
 
 ### Task 1: `GitHubContentClient` — client HTTP isolado para a GitHub Contents API
@@ -224,7 +269,11 @@ export type WriteFileParams = {
  * (experiências, projetos, etc.) — apenas lê/escreve arquivos por caminho.
  */
 export class GitHubContentClient {
-  constructor(private readonly config: GitHubContentClientConfig) {}
+  private readonly config: GitHubContentClientConfig;
+
+  constructor(config: GitHubContentClientConfig) {
+    this.config = config;
+  }
 
   private buildUrl(path: string): string {
     return `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${path}`;
@@ -401,10 +450,13 @@ import type { GitHubContentClient } from "../github/GitHubContentClient";
  * de chamar replaceAll.
  */
 export class JsonResourceRepository<T> {
-  constructor(
-    private readonly client: GitHubContentClient,
-    private readonly path: string
-  ) {}
+  private readonly client: GitHubContentClient;
+  private readonly path: string;
+
+  constructor(client: GitHubContentClient, path: string) {
+    this.client = client;
+    this.path = path;
+  }
 
   async list(): Promise<T[]> {
     const file = await this.client.readFile(this.path);
@@ -531,7 +583,11 @@ export type AdminAuthConfig = {
  * sobre HTTP, cookies ou requests — recebe e devolve apenas strings/booleans.
  */
 export class AdminAuth {
-  constructor(private readonly config: AdminAuthConfig) {}
+  private readonly config: AdminAuthConfig;
+
+  constructor(config: AdminAuthConfig) {
+    this.config = config;
+  }
 
   verifyPassword(candidate: string): boolean {
     const expected = Buffer.from(this.config.adminPassword, "utf-8");
@@ -681,7 +737,11 @@ type AttemptRecord = {
 export class LoginRateLimiter {
   private readonly attempts = new Map<string, AttemptRecord>();
 
-  constructor(private readonly config: LoginRateLimiterConfig) {}
+  private readonly config: LoginRateLimiterConfig;
+
+  constructor(config: LoginRateLimiterConfig) {
+    this.config = config;
+  }
 
   isBlocked(key: string): boolean {
     const record = this.attempts.get(key);
