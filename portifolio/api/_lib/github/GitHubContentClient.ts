@@ -29,7 +29,8 @@ export class GitHubContentClient {
   }
 
   private buildUrl(path: string): string {
-    return `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${path}`;
+    const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+    return `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/contents/${encodedPath}`;
   }
 
   private authHeaders(): Record<string, string> {
@@ -38,6 +39,11 @@ export class GitHubContentClient {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     };
+  }
+
+  private async errorMessage(response: Response, fallback: string): Promise<string> {
+    const body = await response.json().catch(() => null) as { message?: string } | null;
+    return body?.message ? `${fallback}: ${body.message}` : fallback;
   }
 
   async readFile(path: string): Promise<ReadFileResult | null> {
@@ -51,7 +57,9 @@ export class GitHubContentClient {
     }
 
     if (!response.ok) {
-      throw new Error(`GitHub API error ${response.status} reading ${path}`);
+      throw new Error(
+        await this.errorMessage(response, `GitHub API error ${response.status} reading ${path}`)
+      );
     }
 
     const data = (await response.json()) as { content: string; sha: string };
@@ -77,7 +85,9 @@ export class GitHubContentClient {
     });
 
     if (!response.ok) {
-      throw new Error(`GitHub API error ${response.status} writing ${params.path}`);
+      throw new Error(
+        await this.errorMessage(response, `GitHub API error ${response.status} writing ${params.path}`)
+      );
     }
   }
 }
