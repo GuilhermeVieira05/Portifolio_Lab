@@ -5,6 +5,10 @@ import type { GitHubContentClient } from "../github/GitHubContentClient";
  * via um GitHubContentClient. Não valida o shape de T — isso é
  * responsabilidade de um validador específico do recurso, aplicado antes
  * de chamar replaceAll.
+ *
+ * replaceAll faz dois round-trips (readFile para obter o sha atual, depois
+ * writeFile) — uma escrita concorrente nesse intervalo faz o GitHub rejeitar
+ * o PUT com um erro de sha desatualizado, em vez de sobrescrever silenciosamente.
  */
 export class JsonResourceRepository<T> {
   private readonly client: GitHubContentClient;
@@ -18,7 +22,11 @@ export class JsonResourceRepository<T> {
   async list(): Promise<T[]> {
     const file = await this.client.readFile(this.path);
     if (!file) return [];
-    return JSON.parse(file.content) as T[];
+    const parsed: unknown = JSON.parse(file.content);
+    if (!Array.isArray(parsed)) {
+      throw new Error(`Expected ${this.path} to contain a JSON array`);
+    }
+    return parsed as T[];
   }
 
   async replaceAll(items: T[], commitMessage: string): Promise<void> {
