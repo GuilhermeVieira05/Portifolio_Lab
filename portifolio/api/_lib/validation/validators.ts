@@ -35,16 +35,22 @@ function requireMonthYear(value: unknown, field: string): void {
   }
 }
 
-export function validateExperience(data: unknown): void {
+function asRecord(data: unknown, label: string): Record<string, unknown> {
   if (typeof data !== "object" || data === null) {
-    throw new ValidationError("experience must be an object");
+    throw new ValidationError(`${label} must be an object`);
   }
-  const d = data as Record<string, unknown>;
+  return data as Record<string, unknown>;
+}
+
+export function validateExperience(data: unknown): void {
+  const d = asRecord(data, "experience");
 
   requireNonEmptyString(d.id, "id");
   requireLocalizedText(d.role, "role");
   requireLocalizedText(d.company, "company");
   requireMonthYear(d.startDate, "startDate");
+  // finalDate is required but nullable — an omitted key (undefined) is NOT
+  // treated the same as explicit null, and fails requireMonthYear below.
   if (d.finalDate !== null) {
     requireMonthYear(d.finalDate, "finalDate");
   }
@@ -53,10 +59,7 @@ export function validateExperience(data: unknown): void {
 }
 
 export function validateProject(data: unknown): void {
-  if (typeof data !== "object" || data === null) {
-    throw new ValidationError("project must be an object");
-  }
-  const d = data as Record<string, unknown>;
+  const d = asRecord(data, "project");
 
   requireNonEmptyString(d.id, "id");
   requireLocalizedText(d.title, "title");
@@ -82,10 +85,7 @@ const VALID_SKILL_CATEGORIES = new Set([
 ]);
 
 export function validateSkill(data: unknown): void {
-  if (typeof data !== "object" || data === null) {
-    throw new ValidationError("skill must be an object");
-  }
-  const d = data as Record<string, unknown>;
+  const d = asRecord(data, "skill");
 
   requireNonEmptyString(d.id, "id");
   requireNonEmptyString(d.name, "name");
@@ -99,10 +99,7 @@ export function validateSkill(data: unknown): void {
 }
 
 export function validateService(data: unknown): void {
-  if (typeof data !== "object" || data === null) {
-    throw new ValidationError("service must be an object");
-  }
-  const d = data as Record<string, unknown>;
+  const d = asRecord(data, "service");
 
   requireNonEmptyString(d.iconName, "iconName");
   requireLocalizedText(d.title, "title");
