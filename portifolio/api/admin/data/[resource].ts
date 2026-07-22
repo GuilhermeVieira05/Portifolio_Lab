@@ -50,7 +50,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-      items.forEach(definition.validateItem);
+      items.forEach((item, index) => {
+        try {
+          definition.validateItem(item);
+        } catch (error) {
+          if (error instanceof ValidationError) {
+            throw new ValidationError(`item at index ${index}: ${error.message}`);
+          }
+          throw error;
+        }
+      });
     } catch (error) {
       if (error instanceof ValidationError) {
         res.status(400).json({ error: error.message });
