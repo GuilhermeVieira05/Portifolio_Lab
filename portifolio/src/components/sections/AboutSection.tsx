@@ -3,11 +3,12 @@ import React from "react";
 import { Box, Container, Typography, Stack, Avatar } from "@mui/material";
 import { userData } from "../../data/userData";
 import { useTranslation } from "react-i18next";
+import { localize } from "../../lib/localized";
 
 export const AboutSection: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const user = userData
-  const descTraduzida = t(user.desc)
+  const descTraduzida = localize(user.desc, i18n.language);
   return (
     <Box component="section" id="about" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#2c2c2c" }}>
       <Container maxWidth="lg">

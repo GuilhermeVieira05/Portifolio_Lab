@@ -1,12 +1,14 @@
 import { Box, Button } from "@mui/material"
 import { Title } from "../Title"
-import { projects } from "../../data/projects"
+import projectsJson from "../../data/json/projects.json"
+import type { CardType } from "../../Types/cardType"
 import { ProjectCard } from "../Card"
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useTranslation } from "react-i18next";
 
 export const HighLightsSection = () => {
     const { t } = useTranslation()
+    const projects = projectsJson as CardType[];
 
     return (
         <>
@@ -15,7 +17,7 @@ export const HighLightsSection = () => {
                 <Box sx={{ display: 'flex', width: '100%', flexDirection: { xs: "column", sm: "row", md: 'row' }, flexWrap: "wrap", gap: '1rem', justifyContent: 'center', alignItems: "center" }}>
                     {projects
                         .filter((p) => p.highlight).map((p) => (
-                            <ProjectCard project={p} />
+                            <ProjectCard key={p.id} project={p} />
                         ))}
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: 'center', mt: '2rem' }}>

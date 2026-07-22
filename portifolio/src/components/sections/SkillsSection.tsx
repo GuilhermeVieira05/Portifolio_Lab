@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { Box, Container, Button } from "@mui/material";
 import { TechSkills } from "../../components/TechSkills";
-import { skills } from "../../data/techData";
+import skillsJson from "../../data/json/skills.json";
+import type { SkillData } from "../../Types/SkillType";
+import { resolveSkillIcon } from "../../lib/iconRegistry";
 import type { OrderedCategory, TechItem } from "../../Types/techItem";
 import { Title } from "../Title";
 import { useTranslation } from "react-i18next";
@@ -43,8 +45,13 @@ export const SkillsSection: React.FC = () => {
   const [filter, setFilter] = useState<FilterType>("habilidadesSecao.filtros.todos");
 
   const normalizedItems: TechItem[] = useMemo(() => {
-    return skills.map((s: TechItem) => ({
-      ...s,
+    const skills = skillsJson as SkillData[];
+    return skills.map((s) => ({
+      name: s.name,
+      icon: resolveSkillIcon(s.iconName),
+      color: s.color,
+      bg: s.bg,
+      ariaLabel: s.ariaLabel,
       category: normalizeCategory(s.category) ?? "Outros",
     }));
   }, []);

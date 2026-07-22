@@ -14,6 +14,7 @@ import { userData } from "../data/userData.ts";
 import ServicesSection from "../components/sections/ServicesSection.tsx";
 import i18n from "../i18n.ts";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { localize } from "../lib/localized";
 
 function isFirstVisitThisSession() {
   return !sessionStorage.getItem('visited_session');
@@ -37,7 +38,7 @@ export const Home: React.FC = () => {
 
   const user = userData
 
-  const palavrasTraduzidas = user.caracteristicas.map((c) => t(c));
+  const palavrasTraduzidas = user.caracteristicas.map((c) => localize(c, i18n.language));
 
   const { text: typedText, started: typedStarted } = useTypewriter(palavrasTraduzidas, HERO_TYPEWRITER_CONFIG);
 

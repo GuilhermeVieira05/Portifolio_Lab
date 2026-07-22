@@ -5,6 +5,8 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import type { ProjectModalType } from "../Types/ProjectModalType";
 import { useTranslation } from "react-i18next";
+import { localize } from "../lib/localized";
+import i18n from "../i18n";
 
 const modalStyle = {
     position: "absolute",
@@ -48,7 +50,7 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
                     <Box
                         component="img"
                         src={project.image}
-                        alt={project.title}
+                        alt={localize(project.title, i18n.language)}
                         sx={{
                             width: "100%",
                             maxHeight: 400,
@@ -59,7 +61,7 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
                 <Box sx={{ p: 4 }}>
                     <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
                         <Typography id="modal-title" variant="h5" sx={{ color: '#2c2c2c', fontWeight: "bold", fontSize: "2rem" }}>
-                            {t(project.title)}
+                            {localize(project.title, i18n.language)}
                         </Typography>
                         <IconButton onClick={handleClose}><CloseIcon /></IconButton>
                     </Box>
@@ -68,7 +70,7 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
                         <Stack direction="row" spacing={1} alignItems="center" sx={{ bgcolor: '#2c2c2c', borderRadius: '50px', py: 0.5, px: 1 }}>
                             <LanguageIcon fontSize="small" sx={{ color: "#f5f5f5" }} />
 
-                            <Typography variant="body2" sx={{ color: "#f5f5f5" }}>{t(project.type)}</Typography>
+                            <Typography variant="body2" sx={{ color: "#f5f5f5" }}>{project.type}</Typography>
                         </Stack>
                         <Stack direction="row" spacing={1} alignItems="center">
                             <CalendarTodayIcon fontSize="small" />
@@ -80,7 +82,7 @@ export const ProjectModal: React.FC<ProjectModalType> = ({ open, handleClose, pr
                         {t("projetoModal.sobre")}
                     </Typography>
                     <Typography color="text.secondary" sx={{ mb: 3 }}>
-                        {t(project.description)}
+                        {localize(project.description, i18n.language)}
                     </Typography>
 
                     <Typography variant="h6" sx={{ color: '#2c2c2c', fontWeight: "bold" }} gutterBottom>

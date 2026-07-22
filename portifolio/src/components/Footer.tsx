@@ -15,6 +15,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { userData } from "../data/userData";
 import { useTranslation } from "react-i18next";
+import { localize } from "../lib/localized";
 
 type NavLink = { text: string; href: string };
 
@@ -24,7 +25,7 @@ export interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const links = [
     { text: t("header.home"), href: "/" },
     { text: t("header.sobre"), href: "/sobre" },
@@ -35,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({
   const currentYear = new Date().getFullYear();
 
   const user = userData
-  const descTraduzida = t(user.desc)
+  const descTraduzida = localize(user.desc, i18n.language);
 
   const connectLinks = [
     {

@@ -1,6 +1,9 @@
 import { Box, Container, Typography, Grid, Card, CardContent, Avatar } from "@mui/material";
-import type { SvgIconProps } from "@mui/material/SvgIcon";
-import { services } from "../../data/serviceData";
+import servicesJson from "../../data/json/services.json";
+import type { ServiceItem } from "../../Types/ServiceType";
+import { resolveServiceIcon } from "../../lib/iconRegistry";
+import { localize } from "../../lib/localized";
+import i18n from "../../i18n";
 import { Title } from "../Title";
 import { useTranslation } from "react-i18next";
 
@@ -16,8 +19,8 @@ export default function ServicesSection() {
         </Box>
 
         <Grid container spacing={4} justifyContent="center" sx={{ width: "100%", display: 'grid', gridTemplateColumns: { xs: "repeat(1, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" } }}>
-          {services.map((service) => {
-            const Icon = service.icon as React.ElementType<SvgIconProps>;
+          {(servicesJson as ServiceItem[]).map((service) => {
+            const Icon = resolveServiceIcon(service.iconName);
             return (
               <Card
                 sx={{
@@ -52,14 +55,14 @@ export default function ServicesSection() {
                     component="h3"
                     sx={{ color: "white", fontWeight: "bold", mb: 2, fontSize: "1.5rem" }}
                   >
-                    {t(service.title)}
+                    {localize(service.title, i18n.language)}
                   </Typography>
 
                   <Typography
                     variant="body1"
                     sx={{ color: "#b0b0b0", lineHeight: 1.6, textAlign: "center" }}
                   >
-                    {t(service.description)}
+                    {localize(service.description, i18n.language)}
                   </Typography>
                 </CardContent>
               </Card>

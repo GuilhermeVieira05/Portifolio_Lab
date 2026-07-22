@@ -24,9 +24,10 @@ import {
   useInView
 } from 'framer-motion';
 
-import { experienceData } from '../data/experienceData.ts';
+import experiencesJson from '../data/json/experiences.json';
+import { localize } from '../lib/localized';
+import i18n from '../i18n';
 import { type ExperienceType } from "../Types/ExperienceType.js";
-import { useTranslation } from 'react-i18next';
 
 const growY = keyframes`
   0% { transform: scaleY(0); }
@@ -155,7 +156,7 @@ const TiltCard: React.FC<TiltCardProps> = ({
 export const ExperienceTimeline = () => {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-  const dados: ExperienceType[] = experienceData;
+  const dados: ExperienceType[] = experiencesJson as ExperienceType[];
 
   function parseMonthYearString(str?: string) {
     if (!str) return null;
@@ -169,8 +170,6 @@ export const ExperienceTimeline = () => {
     const f = d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
     return f.charAt(0).toUpperCase() + f.slice(1);
   }
-
-  const { t } = useTranslation()
 
   return (
     <div>
@@ -206,12 +205,12 @@ export const ExperienceTimeline = () => {
                     }
                   }}
                 >
-                  {(t(item.type) === "Trabalho" || t(item.type) === "Work") && <BusinessCenterIcon fontSize="small" />}
-                  {(t(item.type) === "Estudo" || t(item.type) === "Study") && <SchoolIcon fontSize="small" />}
-                  {(t(item.type) === "Voluntariado" || t(item.type) === "Volunteering") && <HandshakeIcon fontSize="small" />}
+                  {(localize(item.type, i18n.language) === "Trabalho" || localize(item.type, i18n.language) === "Work") && <BusinessCenterIcon fontSize="small" />}
+                  {(localize(item.type, i18n.language) === "Estudo" || localize(item.type, i18n.language) === "Study") && <SchoolIcon fontSize="small" />}
+                  {(localize(item.type, i18n.language) === "Voluntariado" || localize(item.type, i18n.language) === "Volunteering") && <HandshakeIcon fontSize="small" />}
                 </TimelineDot>
 
-                {idx !== experienceData.length - 1 && (
+                {idx !== dados.length - 1 && (
                   <TimelineConnector
                     sx={{
                       transformOrigin: 'top',
@@ -253,16 +252,16 @@ export const ExperienceTimeline = () => {
                     }}
                   >
                     <Typography variant="h6" component="span" fontWeight={700} sx={{ color: "#fff", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>
-                      {t(item.role)}
+                      {localize(item.role, i18n.language)}
                     </Typography>
                     <Typography variant="subtitle2" sx={{ color: "rgba(255,255,255,0.75)" }}>
-                      {t(item.company)}
+                      {localize(item.company, i18n.language)}
                     </Typography>
                     <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.6)", fontStyle: "italic" }}>
                       {formatDate(item.startDate)} — {item.finalDate ? formatDate(item.finalDate) : "Atual"}
                     </Typography>
                     <Typography variant="body2" mt={1} sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>
-                      {t(item.description)}
+                      {localize(item.description, i18n.language)}
                     </Typography>
                     <Box
                       mt={1}
@@ -281,10 +280,10 @@ export const ExperienceTimeline = () => {
                         letterSpacing: 0.3
                       }}
                     >
-                      {(t(item.type) === "Trabalho" || t(item.type) === "Work") && <BusinessCenterIcon fontSize="inherit" />}
-                      {(t(item.type) === "Estudo" || t(item.type) === "Study") && <SchoolIcon fontSize="inherit" />}
-                      {(t(item.type) === "Voluntariado" || t(item.type) === "Volunteering") && <HandshakeIcon fontSize="inherit" />}
-                      {t(item.type)}
+                      {(localize(item.type, i18n.language) === "Trabalho" || localize(item.type, i18n.language) === "Work") && <BusinessCenterIcon fontSize="inherit" />}
+                      {(localize(item.type, i18n.language) === "Estudo" || localize(item.type, i18n.language) === "Study") && <SchoolIcon fontSize="inherit" />}
+                      {(localize(item.type, i18n.language) === "Voluntariado" || localize(item.type, i18n.language) === "Volunteering") && <HandshakeIcon fontSize="inherit" />}
+                      {localize(item.type, i18n.language)}
                     </Box>
                   </TiltCard>
                 </TimelineContent>

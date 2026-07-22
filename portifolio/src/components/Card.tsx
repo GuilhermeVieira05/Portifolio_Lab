@@ -21,6 +21,8 @@ import type { CardType, ProjectType } from '../Types/cardType';
 import { ProjectModal } from './ProjectModal';
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/material';
+import { localize } from '../lib/localized';
+import i18n from '../i18n';
 // Helper para ícone do tipo
 const getTypeIcon = (type: ProjectType) => {
   switch (type) {
@@ -80,13 +82,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             backgroundColor: 'rgba(30, 30, 30, .8)'
           }}
           image={project.image || "https://via.placeholder.com/400x180/303030/FFFFFF?text=No+Image"}
-          title={t(project.title)}
+          title={localize(project.title, i18n.language)}
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Chip
-            icon={getTypeIcon(t(project.type))}
-            label={t(project.type)}
+            icon={getTypeIcon(project.type)}
+            label={project.type}
             size="small"
             sx={{
               mb: 2, bgcolor: 'primary.main',
@@ -95,18 +97,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             }}
           />
           <Chip
-            icon={getStatusIcon(t(project.status))}
-            label={t(project.status)}
+            icon={getStatusIcon(localize(project.status, i18n.language))}
+            label={localize(project.status, i18n.language)}
             size="small"
             sx={{
-              mb: 2, bgcolor: getColor(t(project.status)),
+              mb: 2, bgcolor: getColor(localize(project.status, i18n.language)),
               color: 'white', fontWeight: 'bold',
               '.MuiChip-icon': { color: 'white' }
             }}
           />
           </Box>
           <Typography gutterBottom variant="h5" fontWeight="bold">
-            {t(project.title)}
+            {localize(project.title, i18n.language)}
           </Typography>
           <Typography
             variant="body2"
@@ -119,7 +121,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               overflow: "hidden",
             }}
           >
-            {t(project.description)}
+            {localize(project.description, i18n.language)}
           </Typography>
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 2 }}>
             {showLanguages.map((lang, i) => (

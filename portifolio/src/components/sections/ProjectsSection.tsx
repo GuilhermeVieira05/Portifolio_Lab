@@ -6,31 +6,37 @@ import {
   Grid,
 } from "@mui/material";
 import { ProjectCard } from "../../components/Card";
-import { projects } from "../../data/projects";
+import projectsJson from "../../data/json/projects.json";
+import type { CardType } from "../../Types/cardType";
+import { localize } from "../../lib/localized";
+import i18n from "../../i18n";
 import { Button } from "@mui/material";
 import { Title } from "../Title";
 import { useTranslation } from "react-i18next";
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 // Lista de filtros (inclui "Todos")
-const FILTERS = [
-  "projetosSecao.filtros.all",
-  "projects.types.sites",
-  "projects.types.landing",
-  "projects.types.apps",
-  "projects.types.ecommerce",
-  "projects.types.others",
-] as const;
+const FILTERS = ["Todos", "Sites", "Landing Pages", "Aplicativos", "E-Commerce", "Outros"] as const;
 
 type FilterType = (typeof FILTERS)[number];
 
+const FILTER_LABELS: Record<FilterType, { pt: string; en: string }> = {
+  Todos: { pt: "Todos", en: "All" },
+  Sites: { pt: "Sites", en: "Websites" },
+  "Landing Pages": { pt: "Landing Pages", en: "Landing Pages" },
+  Aplicativos: { pt: "Aplicativos", en: "Apps" },
+  "E-Commerce": { pt: "E-Commerce", en: "E-Commerce" },
+  Outros: { pt: "Outros", en: "Others" },
+};
+
 export const ProjectsSection: React.FC = () => {
   const { t } = useTranslation()
-  const [filter, setFilter] = useState<FilterType>("projetosSecao.filtros.all");
+  const projects = projectsJson as CardType[];
+  const [filter, setFilter] = useState<FilterType>("Todos");
   const filteredProjects = useMemo(() => {
-    if (filter === "projetosSecao.filtros.all") return projects;
+    if (filter === "Todos") return projects;
     return projects.filter((p) => p.type === filter);
-  }, [filter]);
+  }, [filter, projects]);
 
   return (
     <Box component="section" id="projects" sx={{ py: { xs: 8, md: 8 }, pt: { xs: 0 } }}>
@@ -71,7 +77,7 @@ export const ProjectsSection: React.FC = () => {
                   },
                 }}
               >
-                {t(f)}
+                {localize(FILTER_LABELS[f], i18n.language)}
               </Button>
             );
           })}
@@ -81,7 +87,7 @@ export const ProjectsSection: React.FC = () => {
           <Box sx={{ display: "flex", justifyContent: "center", textAlign: {xs: "center", md: "start"}, py: 6 }}>
             <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", textAlign: {xs: "center", md: "start"}, flexDirection: {xs: "column", sm: "row"}, gap: 1, px: {xs: 2, sm:4}, py: 2, color: "#f5f5f5", border: "2px solid #f5f5f5", bgcolor: "transparent", borderRadius: "8px", width: {xs: "80%", md: "80%", lg:"40%"}}}>
               <ReportProblemIcon sx={{}}/>
-              Nenhum projeto encontrado para o filtro “{t(filter)}”.
+              Nenhum projeto encontrado para o filtro “{localize(FILTER_LABELS[filter], i18n.language)}”.
             </Box>
           </Box>
         ) : (
