@@ -4,6 +4,7 @@ import {
   validateProject,
   validateSkill,
   validateService,
+  validateUser,
   ValidationError,
 } from "./validators";
 
@@ -115,5 +116,27 @@ describe("validateService", () => {
 
   it("rejects an unrecognized service iconName", () => {
     expect(() => validateService({ ...valid, iconName: "NotARealIcon" })).toThrow(ValidationError);
+  });
+});
+
+describe("validateUser", () => {
+  const valid = {
+    name: "Guilherme Vieira",
+    emailName: "guilhermearv3@gmail.com",
+    telefone: "+5531986991214",
+    caracteristicas: [{ pt: "Fullstack", en: "Fullstack" }],
+  };
+
+  it("accepts a well-formed user", () => {
+    expect(() => validateUser(valid)).not.toThrow();
+  });
+
+  it("rejects a missing name", () => {
+    const { name, ...rest } = valid;
+    expect(() => validateUser(rest)).toThrow(ValidationError);
+  });
+
+  it("rejects caracteristicas that is not an array", () => {
+    expect(() => validateUser({ ...valid, caracteristicas: "Fullstack" })).toThrow(ValidationError);
   });
 });

@@ -113,3 +113,14 @@ export function validateService(data: unknown): void {
   requireLocalizedText(d.title, "title");
   requireLocalizedText(d.description, "description");
 }
+
+export function validateUser(data: unknown): void {
+  const d = asRecord(data, "user");
+
+  requireNonEmptyString(d.name, "name");
+  requireNonEmptyString(d.emailName, "emailName");
+  requireNonEmptyString(d.telefone, "telefone");
+  if (!Array.isArray(d.caracteristicas)) {
+    throw new ValidationError("caracteristicas must be an array");
+  }
+}
