@@ -15,6 +15,17 @@ export type WriteFileParams = {
   content: string;
   message: string;
   sha?: string;
+  /**
+   * Como interpretar `content` antes de enviar para a GitHub Contents API,
+   * que sempre espera base64 no corpo da requisição:
+   * - "utf-8" (padrão): `content` é uma string de texto (ex.: JSON) e é
+   *   codificada para base64 aqui.
+   * - "base64": `content` já é uma string base64 (ex.: um PDF lido no
+   *   browser via FileReader) e é usada como está, sem recodificação —
+   *   recodificar um binário via uma string JS intermediária corrompe bytes
+   *   fora do intervalo ASCII.
+   */
+  encoding?: "utf-8" | "base64";
 };
 
 /**
@@ -78,7 +89,10 @@ export class GitHubContentClient {
       },
       body: JSON.stringify({
         message: params.message,
-        content: Buffer.from(params.content, "utf-8").toString("base64"),
+        content:
+          params.encoding === "base64"
+            ? params.content
+            : Buffer.from(params.content, "utf-8").toString("base64"),
         branch: this.config.branch,
         ...(params.sha ? { sha: params.sha } : {}),
       }),

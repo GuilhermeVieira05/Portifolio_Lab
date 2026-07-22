@@ -100,4 +100,53 @@ describe("GitHubContentClient", () => {
     const body = JSON.parse((options as RequestInit).body as string);
     expect(body.sha).toBeUndefined();
   });
+
+  it("writeFile with encoding: 'base64' sends content unchanged, preserving binary bytes", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ commit: { sha: "newsha" } }),
+    });
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    // Bytes spanning the full 0-255 range, including many >= 0x80 where a
+    // utf-8 re-encode of a latin1-decoded string would corrupt data.
+    const originalBytes = Buffer.from([0, 1, 2, 127, 128, 129, 200, 255, 254, 10, 13, 65, 66, 67]);
+    const fileBase64 = originalBytes.toString("base64");
+
+    const client = new GitHubContentClient(config);
+    await client.writeFile({
+      path: "portifolio/src/assets/curriculo.pdf",
+      content: fileBase64,
+      message: "chore: update resume via admin",
+      encoding: "base64",
+    });
+
+    const [, options] = fetchMock.mock.calls[0];
+    const body = JSON.parse((options as RequestInit).body as string);
+    // The base64 string sent to GitHub must be byte-for-byte identical to
+    // what was passed in — no re-encoding through an intermediate string.
+    expect(body.content).toBe(fileBase64);
+    expect(Buffer.from(body.content, "base64").equals(originalBytes)).toBe(true);
+  });
+
+  it("writeFile without encoding still utf-8-encodes content (default/back-compat)", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ commit: { sha: "newsha" } }),
+    });
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    const client = new GitHubContentClient(config);
+    await client.writeFile({
+      path: "portifolio/src/data/json/user.json",
+      content: '{"name":"Guilherme"}',
+      message: "chore: update user data via admin",
+    });
+
+    const [, options] = fetchMock.mock.calls[0];
+    const body = JSON.parse((options as RequestInit).body as string);
+    expect(Buffer.from(body.content, "base64").toString("utf-8")).toBe('{"name":"Guilherme"}');
+  });
 });
