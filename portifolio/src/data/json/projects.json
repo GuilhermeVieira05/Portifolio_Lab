@@ -1,0 +1,106 @@
+[
+  {
+    "id": "8",
+    "title": { "pt": "Ajunta", "en": "Ajunta" },
+    "description": { "pt": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade.", "en": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade." },
+    "languages": ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Aws", "Docker", "Python", "WebSocket", "API-Gateway", "Tailwind", "RabbitMQ", "Terraform"],
+    "type": "Sites",
+    "status": { "pt": "Em Andamento", "en": "In Progress" },
+    "image": "src/assets/projectsImages/login-ajunta.png",
+    "date": "01/05/2023",
+    "siteLink": "https://tinyurl.com/ajuntaa",
+    "gitHubLink": "https://github.com/GuilhermeVieira05/pmg-es-2025-2-ti4-3170100-ajunta"
+  },
+  {
+    "id": "1",
+    "title": { "pt": "Tradutor com IA", "en": "Tradutor com IA" },
+    "description": { "pt": "Este projeto é uma aplicação web para tradução de textos entre diferentes idiomas. Feito em React, ele conta com uma interface moderna, responsiva e fácil de usar — funcionando perfeitamente em computadores, tablets e celulares.", "en": "Este projeto é uma aplicação web para tradução de textos entre diferentes idiomas. Feito em React, ele conta com uma interface moderna, responsiva e fácil de usar — funcionando perfeitamente em computadores, tablets e celulares." },
+    "languages": ["React", "TypeScript", "CSS3", "Langchain", "Gemini", "Python", "Fast API", "SQLite"],
+    "type": "Outros",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/tradutor.png",
+    "highlight": true,
+    "date": "01/05/2023",
+    "siteLink": "",
+    "gitHubLink": "https://github.com/GuilhermeVieira05/Tradutor_IA",
+    "video": "src/assets/videos/tradutorIA.mp4"
+  },
+  {
+    "id": "2",
+    "title": { "pt": "Criador de Readme", "en": "Criador de Readme" },
+    "description": { "pt": "O ReadmeCreator é uma ferramenta com IA que ajuda a escrever READMEs consistentes, completos e profissionais para qualquer repositório. Conecta-se ao GitHub para importar informações do projeto e agilizar a publicação. Sugere seções úteis (visão geral, instalação, uso, roadmap, licença), otimiza a legibilidade e incentiva boas práticas de documentação. Ideal para acelerar a criação de READMEs padronizados em equipes ou portfólios pessoais.", "en": "O ReadmeCreator é uma ferramenta com IA que ajuda a escrever READMEs consistentes, completos e profissionais para qualquer repositório. Conecta-se ao GitHub para importar informações do projeto e agilizar a publicação. Sugere seções úteis (visão geral, instalação, uso, roadmap, licença), otimiza a legibilidade e incentiva boas práticas de documentação. Ideal para acelerar a criação de READMEs padronizados em equipes ou portfólios pessoais." },
+    "languages": ["React", "TypeScript", "Langchain", "Python", "Fast API", "SQLite", "Gemini"],
+    "type": "Outros",
+    "status": { "pt": "Em Andamento", "en": "In Progress" },
+    "image": "src/assets/projectsImages/ComingSoon.jpg",
+    "highlight": true,
+    "date": "01/05/2023"
+  },
+  {
+    "id": "3",
+    "title": { "pt": "Portifolio", "en": "Portifolio" },
+    "description": { "pt": "Este portfólio foi pensado para ser dinâmico e conversacional. Além de apresentar meus projetos, experiências e contato, ele traz um assistente de IA que ajuda visitantes a navegar e entender rapidamente o que faço: explica tecnologias usadas, sugere projetos relevantes e responde dúvidas frequentes. A proposta é transformar o portfólio em uma experiência guiada, com descobertas contextualizadas e interação natural.", "en": "Este portfólio foi pensado para ser dinâmico e conversacional. Além de apresentar meus projetos, experiências e contato, ele traz um assistente de IA que ajuda visitantes a navegar e entender rapidamente o que faço: explica tecnologias usadas, sugere projetos relevantes e responde dúvidas frequentes. A proposta é transformar o portfólio em uma experiência guiada, com descobertas contextualizadas e interação natural." },
+    "languages": ["React", "TypeScript", "Langchain", "Gemini", "Python", "Fast API", "Material UI"],
+    "type": "Sites",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/portifolio.png",
+    "highlight": true,
+    "date": "01/05/2023",
+    "video": "src/assets/videos/portifolio.mp4",
+    "gitHubLink": "https://github.com/GuilhermeVieira05/Portifolio_Lab"
+  },
+  {
+    "id": "4",
+    "title": { "pt": "G-AGRO", "en": "G-AGRO" },
+    "description": { "pt": "O G-Agro é um sistema voltado a produtores e gestores do agronegócio, oferecendo uma visão unificada das operações no campo. Permite organizar propriedades e áreas de produção, acompanhar insumos e atividades (plantio, tratos, colheita), registrar custos e visualizar desempenho por safra. Com painéis sintéticos, facilita a identificação de gargalos, o controle de estoque e a análise de rentabilidade.", "en": "O G-Agro é um sistema voltado a produtores e gestores do agronegócio, oferecendo uma visão unificada das operações no campo. Permite organizar propriedades e áreas de produção, acompanhar insumos e atividades (plantio, tratos, colheita), registrar custos e visualizar desempenho por safra. Com painéis sintéticos, facilita a identificação de gargalos, o controle de estoque e a análise de rentabilidade." },
+    "languages": ["React", "JavaScript", "Java", "SpringBoot", "PostgreSQL"],
+    "type": "Sites",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/gagro.png",
+    "date": "01/05/2023",
+    "video": "src/assets/videos/gagro.mp4"
+  },
+  {
+    "id": "5",
+    "title": { "pt": "Básico Bem Feito", "en": "Básico Bem Feito" },
+    "description": { "pt": "O Básico Bem Feito nasce da ideia de que simplicidade e capricho elevam a experiência do usuário. É um site estático para academia, construído com atenção a layout responsivo, tipografia legível e acessibilidade. Inclui uma funcionalidade simples de criação de fichas de treino e seções essenciais como planos, horários e contato. Um projeto que prioriza boas práticas de front-end desde o início da jornada.", "en": "O Básico Bem Feito nasce da ideia de que simplicidade e capricho elevam a experiência do usuário. É um site estático para academia, construído com atenção a layout responsivo, tipografia legível e acessibilidade. Inclui uma funcionalidade simples de criação de fichas de treino e seções essenciais como planos, horários e contato. Um projeto que prioriza boas práticas de front-end desde o início da jornada." },
+    "languages": ["HTML5", "CSS3", "JavaScript"],
+    "type": "Sites",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/bbf.png",
+    "date": "01/05/2023",
+    "video": "src/assets/videos/bbf.mp4"
+  },
+  {
+    "id": "6",
+    "title": { "pt": "Optima", "en": "Optima" },
+    "description": { "pt": "O Optima é um sistema de gestão empresarial que integra os principais processos de uma empresa em um só lugar. Abrange módulos de vendas, compras, estoque e financeiro, permitindo controle do fluxo de ponta a ponta — da entrada de pedidos ao acompanhamento de margens e lucros. Com painéis e relatórios personalizáveis, apoia decisões rápidas e embasadas, reduzindo retrabalho e aumentando a visibilidade operacional.", "en": "O Optima é um sistema de gestão empresarial que integra os principais processos de uma empresa em um só lugar. Abrange módulos de vendas, compras, estoque e financeiro, permitindo controle do fluxo de ponta a ponta — da entrada de pedidos ao acompanhamento de margens e lucros. Com painéis e relatórios personalizáveis, apoia decisões rápidas e embasadas, reduzindo retrabalho e aumentando a visibilidade operacional." },
+    "languages": ["Next.Js", "SCSS", "TypeScript", "Node.js", "Express.js", "Prisma", "PostgreSQL"],
+    "type": "Sites",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/Optima.jpg",
+    "date": "01/05/2023",
+    "video": "src/assets/videos/optima.mp4"
+  },
+  {
+    "id": "7",
+    "title": { "pt": "E-commerce", "en": "E-commerce" },
+    "description": { "pt": "E-commerce full-feature, com catálogo de produtos (categorias, filtros e busca), páginas de produto com variações, carrinho persistente e checkout seguro integrado a um gateway de pagamento. Inclui cálculo de frete, gestão básica de estoque, área do cliente (pedidos e dados), e painel administrativo para CRUD de produtos. Projetado com boas práticas de SEO, acessibilidade e monitoramento de eventos para otimização de conversão.", "en": "E-commerce full-feature, com catálogo de produtos (categorias, filtros e busca), páginas de produto com variações, carrinho persistente e checkout seguro integrado a um gateway de pagamento. Inclui cálculo de frete, gestão básica de estoque, área do cliente (pedidos e dados), e painel administrativo para CRUD de produtos. Projetado com boas práticas de SEO, acessibilidade e monitoramento de eventos para otimização de conversão." },
+    "languages": ["HTML5", "CSS3", "JavaScript", "GSAP"],
+    "type": "E-Commerce",
+    "status": { "pt": "Em Andamento", "en": "In Progress" },
+    "image": "src/assets/projectsImages/ComingSoon.jpg",
+    "date": "01/05/2023"
+  },
+  {
+    "id": "9",
+    "title": { "pt": "Voogle", "en": "Voogle" },
+    "description": { "pt": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade.", "en": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade." },
+    "languages": ["React", "Tailwind", "TypeScript"],
+    "type": "Landing Pages",
+    "status": { "pt": "Finalizado", "en": "Finished" },
+    "image": "src/assets/projectsImages/voogle.png",
+    "date": "01/05/2023",
+    "video": "src/assets/videos/voogle.mp4"
+  }
+]

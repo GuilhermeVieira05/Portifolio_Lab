@@ -6,13 +6,6 @@
         "projetos": "Projetos",
         "contato": "Contato"
     },
-    "user": {
-        "desc": "Sou Desenvolvedor Full Stack especializado em IA e automação, criando soluções ponta a ponta que conectam frontends reativos, APIs robustas e agentes inteligentes. Trabalho na orquestração de fluxos automatizados, integrações com LLMs, e construção de serviços escaláveis em nuvem, sempre com atenção a segurança, observabilidade e custo. Meu objetivo é reduzir esforço operacional e acelerar a entrega de valor com sistemas confiáveis, mensuráveis e fáceis de evoluir.",
-        "fullstack": "Fullstack",
-        "backend": "Backend",
-        "ai": "de IA",
-        "software": "de Software"
-    },
     "home": {
         "desenvolvedor": "Desenvolvedor",
         "btnTexto01": "Baixar Currículo",
@@ -96,82 +89,6 @@
         "titulo": "Meus Serviços",
         "subtitulo": "Soluções completas para transformar suas ideias em realidade digital."
     },
-    "servicos": {
-        "sites": {
-            "titulo": "Criação de Sites",
-            "descricao": "Sites institucionais modernos, responsivos e otimizados para sua empresa"
-        },
-        "landing": {
-            "titulo": "Landing Pages",
-            "descricao": "Páginas de conversão otimizadas para aumentar suas vendas e leads"
-        },
-        "ecommerce": {
-            "titulo": "E-commerces",
-            "descricao": "Lojas virtuais completas com sistema de pagamentos e gestão de produtos"
-        },
-        "linkBio": {
-            "titulo": "Link na Bio",
-            "descricao": "Páginas personalizadas para centralizar todos seus links e redes sociais"
-        },
-        "manutencao": {
-            "titulo": "Manutenção",
-            "descricao": "Suporte técnico, atualizações e melhorias contínuas para seu site"
-        },
-        "personalizado": {
-            "titulo": "Projeto Personalizado",
-            "descricao": "Soluções sob medida para necessidades específicas do seu negócio"
-        }
-    },
-    "experiencias": {
-        "experiencia01": {
-            "papel": "Desenvolvedor Fullstack - Agência Experimental",
-            "empresa": "Puc Minas",
-            "descricao": "Sou desenvolvedor FullStack Na Agência Experimental da Puc Minas, participando ativamente dos projetos da Grade Inteligente e Landing Page, onde pude adquirir experiência prática em projetos sem fins lucrativos. Desenvolvo utilizando Java com SpringBoot, e TypeScript no frontend.",
-            "tipo": "Trabalho"
-        },
-        "experiencia02": {
-            "papel": "Estagiário de Desenvolvimento FullStack",
-            "empresa": "4mti",
-            "descricao": "Atuo no desenvolvimento de soluções automatizadas e manipulação de grandes volumes de dados, utilizando PHP, Python, HTML e PostgreSQL. Trabalho na criação de robôs e automações para otimizar processos, além de contribuir para o front-end de aplicações e a gestão de banco de dados.",
-            "tipo": "Trabalho"
-        },
-        "experiencia03": {
-            "papel": "Freelancer - Desenvolvimento Web",
-            "empresa": "Voogle",
-            "descricao": "Desenvolvi uma página web personalizada para um cliente, atendendo às suas necessidades específicas de design e funcionalidade. Para o desenvolvimento do projeto, utilizei React, TypeScript, Tailwind para criar uma interface responsiva e intuitiva. Entreguei o projeto dentro do prazo estipulado, com alta satisfação do cliente.",
-            "tipo": "Trabalho"
-        },
-        "experiencia04": {
-            "papel": "Coordenador da Tesouraria da Obra Jovem Santa Helena",
-            "empresa": "Santa Helena",
-            "descricao": "Fui o coordenador da Tesouraria da Obra Jovem Santa Helena, responsável pela gestão da tesouraria e financiamento da obra.",
-            "tipo": "Voluntariado"
-        },
-        "experiencia05": {
-            "papel": "Engenharia de Software",
-            "empresa": "PUC Minas",
-            "descricao": "Formação orientada a projetos com base sólida em arquitetura, estruturas de dados, bancos de dados e sistemas embarcados. Ênfase em boas práticas (como testes, versionamento e CI/CD), métodos ágeis e fundamentos de IA para construir soluções escaláveis, seguras e prontas para produção.",
-            "tipo": "Estudo"
-        },
-        "experiencia06": {
-            "papel": "Coordenador da Perseverança da Obra Jovem Santa Helena",
-            "empresa": "Santa Helena",
-            "descricao": "Fui o coordenador da Perseverança da Obra Jovem Santa Helena, responsável pela catequização e formação de jovens católicos.",
-            "tipo": "Voluntariado"
-        },
-        "experiencia07": {
-            "papel": "Estagiário de Desenvolvimento",
-            "empresa": "NetAdmin",
-            "descricao": "",
-            "tipo": "Trabalho"
-        },
-        "experiencia08": {
-            "papel":"Desenvolvedor FullStack Junior",
-            "empresa": "Zoppy",
-            "descricao":"Atuo como Desenvolvedor Full Stack na Zoppy, contribuindo para a evolução da plataforma de CRM e automação de marketing focada no varejo.",
-            "tipo": "Trabalho"
-        }
-    },
     "projects": {
         "btnTexto": "Ver Detalhes",
         "types": {
@@ -184,42 +101,6 @@
         "status":{
             "inProgress": "Em Andamento",
             "done": "Finalizado"
-        },
-        "tradutorIA": {
-            "title": "Tradutor com IA",
-            "description": "Este projeto é uma aplicação web para tradução de textos entre diferentes idiomas. Feito em React, ele conta com uma interface moderna, responsiva e fácil de usar — funcionando perfeitamente em computadores, tablets e celulares."
-        },
-        "ReadmeCreator": {
-            "title": "Criador de Readme",
-            "description": "O ReadmeCreator é uma ferramenta com IA que ajuda a escrever READMEs consistentes, completos e profissionais para qualquer repositório. Conecta-se ao GitHub para importar informações do projeto e agilizar a publicação. Sugere seções úteis (visão geral, instalação, uso, roadmap, licença), otimiza a legibilidade e incentiva boas práticas de documentação. Ideal para acelerar a criação de READMEs padronizados em equipes ou portfólios pessoais."
-        },
-        "Portifolio": {
-            "title": "Portifolio",
-            "description": "Este portfólio foi pensado para ser dinâmico e conversacional. Além de apresentar meus projetos, experiências e contato, ele traz um assistente de IA que ajuda visitantes a navegar e entender rapidamente o que faço: explica tecnologias usadas, sugere projetos relevantes e responde dúvidas frequentes. A proposta é transformar o portfólio em uma experiência guiada, com descobertas contextualizadas e interação natural."
-        },
-        "G-agro": {
-            "title": "G-AGRO",
-            "description": "O G-Agro é um sistema voltado a produtores e gestores do agronegócio, oferecendo uma visão unificada das operações no campo. Permite organizar propriedades e áreas de produção, acompanhar insumos e atividades (plantio, tratos, colheita), registrar custos e visualizar desempenho por safra. Com painéis sintéticos, facilita a identificação de gargalos, o controle de estoque e a análise de rentabilidade."
-        },
-        "BasicoBemFeito": {
-            "title": "Básico Bem Feito",
-            "description": "O Básico Bem Feito nasce da ideia de que simplicidade e capricho elevam a experiência do usuário. É um site estático para academia, construído com atenção a layout responsivo, tipografia legível e acessibilidade. Inclui uma funcionalidade simples de criação de fichas de treino e seções essenciais como planos, horários e contato. Um projeto que prioriza boas práticas de front-end desde o início da jornada."
-        },
-        "Optima": {
-            "title": "Optima",
-            "description": "O Optima é um sistema de gestão empresarial que integra os principais processos de uma empresa em um só lugar. Abrange módulos de vendas, compras, estoque e financeiro, permitindo controle do fluxo de ponta a ponta — da entrada de pedidos ao acompanhamento de margens e lucros. Com painéis e relatórios personalizáveis, apoia decisões rápidas e embasadas, reduzindo retrabalho e aumentando a visibilidade operacional."
-        },
-         "Ecommerce": {
-            "title": "E-commerce",
-            "description": "E-commerce full-feature, com catálogo de produtos (categorias, filtros e busca), páginas de produto com variações, carrinho persistente e checkout seguro integrado a um gateway de pagamento. Inclui cálculo de frete, gestão básica de estoque, área do cliente (pedidos e dados), e painel administrativo para CRUD de produtos. Projetado com boas práticas de SEO, acessibilidade e monitoramento de eventos para otimização de conversão."
-        },
-        "Ajunta": {
-            "title": "Ajunta",
-            "description": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade."
-        },
-        "Voogle": {
-            "title": "Voogle",
-            "description": "A Ajunta é uma rede social criada para valorizar e integrar a cena artística de Contagem. Artistas podem criar perfis, publicar trabalhos, se conectar com outros criadores e descobrir oportunidades locais. O objetivo é fortalecer o ecossistema cultural, facilitar parcerias e dar visibilidade a talentos por meio de portfólios, eventos e interações em comunidade."
         }
     }
 }

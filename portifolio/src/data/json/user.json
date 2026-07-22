@@ -1,0 +1,19 @@
+{
+  "name": "Guilherme Vieira",
+  "desc": { "pt": "Sou Desenvolvedor Full Stack especializado em IA e automação, criando soluções ponta a ponta que conectam frontends reativos, APIs robustas e agentes inteligentes. Trabalho na orquestração de fluxos automatizados, integrações com LLMs, e construção de serviços escaláveis em nuvem, sempre com atenção a segurança, observabilidade e custo. Meu objetivo é reduzir esforço operacional e acelerar a entrega de valor com sistemas confiáveis, mensuráveis e fáceis de evoluir.", "en": "I'm a Full Stack Developer specialized in AI and automation, building end-to-end solutions that connect reactive frontends, robust APIs, and intelligent agents. I orchestrate automated workflows, LLM integrations, and cloud-native services with an emphasis on security, observability, and cost efficiency. My goal is to reduce operational toil and accelerate value delivery with reliable, measurable systems that are easy to evolve." },
+  "emailName": "guilhermearv3@gmail.com",
+  "linkedinName": "guilherme-arvieira",
+  "githubName": "GuilhermeVieira05",
+  "links": {
+    "github": "https://github.com/GuilhermeVieira05",
+    "linkedin": "https://www.linkedin.com/in/guilherme-arvieira/",
+    "email": "guilhermearv3@gmail.com"
+  },
+  "telefone": "+5531986991214",
+  "caracteristicas": [
+    { "pt": "Fullstack", "en": "Fullstack" },
+    { "pt": "Backend", "en": "Backend" },
+    { "pt": "de IA", "en": "AI" },
+    { "pt": "de Software", "en": "Software" }
+  ]
+}

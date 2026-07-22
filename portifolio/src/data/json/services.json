@@ -1,0 +1,8 @@
+[
+  { "iconName": "Language", "title": { "pt": "Criação de Sites", "en": "Website Creation" }, "description": { "pt": "Sites institucionais modernos, responsivos e otimizados para sua empresa", "en": "Modern, responsive, and optimized institutional websites for your company" } },
+  { "iconName": "RocketLaunch", "title": { "pt": "Landing Pages", "en": "Landing Pages" }, "description": { "pt": "Páginas de conversão otimizadas para aumentar suas vendas e leads", "en": "Conversion-optimized pages to increase your sales and leads" } },
+  { "iconName": "ShoppingCart", "title": { "pt": "E-commerces", "en": "E-commerce" }, "description": { "pt": "Lojas virtuais completas com sistema de pagamentos e gestão de produtos", "en": "Complete online stores with payment system and product management" } },
+  { "iconName": "Link", "title": { "pt": "Link na Bio", "en": "Link in Bio" }, "description": { "pt": "Páginas personalizadas para centralizar todos seus links e redes sociais", "en": "Custom pages to centralize all your links and social media" } },
+  { "iconName": "Build", "title": { "pt": "Manutenção", "en": "Maintenance" }, "description": { "pt": "Suporte técnico, atualizações e melhorias contínuas para seu site", "en": "Technical support, updates, and continuous improvements for your website" } },
+  { "iconName": "Extension", "title": { "pt": "Projeto Personalizado", "en": "Custom Project" }, "description": { "pt": "Soluções sob medida para necessidades específicas do seu negócio", "en": "Tailor-made solutions for your business's specific needs" } }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "exp-08",
+    "role": { "pt": "Desenvolvedor FullStack Junior", "en": "Junior FullStack Developer" },
+    "company": { "pt": "Zoppy", "en": "Zoppy" },
+    "startDate": "01/2026",
+    "finalDate": null,
+    "description": { "pt": "Atuo como Desenvolvedor Full Stack na Zoppy, contribuindo para a evolução da plataforma de CRM e automação de marketing focada no varejo.", "en": "I work as a Full Stack Developer at Zoppy, contributing to the evolution of the CRM and marketing automation platform focused on retail." },
+    "type": { "pt": "Trabalho", "en": "Work" }
+  },
+  {
+    "id": "exp-07",
+    "role": { "pt": "Estagiário de Desenvolvimento", "en": "Developer Internship" },
+    "company": { "pt": "NetAdmin", "en": "NetAdmin" },
+    "startDate": "11/2025",
+    "finalDate": "01/2026",
+    "description": { "pt": "Estagiário de desenvolvimento na NetAdmin.", "en": "Development intern at NetAdmin." },
+    "type": { "pt": "Trabalho", "en": "Work" }
+  },
+  {
+    "id": "exp-01",
+    "role": { "pt": "Desenvolvedor Fullstack - Agência Experimental", "en": "Fullstack Developer - Experimental Agency" },
+    "company": { "pt": "Puc Minas", "en": "Puc Minas" },
+    "startDate": "08/2025",
+    "finalDate": null,
+    "description": { "pt": "Sou desenvolvedor FullStack Na Agência Experimental da Puc Minas, participando ativamente dos projetos da Grade Inteligente e Landing Page, onde pude adquirir experiência prática em projetos sem fins lucrativos. Desenvolvo utilizando Java com SpringBoot, e TypeScript no frontend.", "en": "I work as a FullStack Developer at Puc Minas' Experimental Agency, actively participating in the Grade Inteligente and Landing Page projects, where I gained practical experience in non-profit initiatives. I develop using Java with SpringBoot, and TypeScript on the frontend." },
+    "type": { "pt": "Trabalho", "en": "Work" }
+  },
+  {
+    "id": "exp-02",
+    "role": { "pt": "Estagiário de Desenvolvimento FullStack", "en": "FullStack Development Intern" },
+    "company": { "pt": "4mti", "en": "4mti" },
+    "startDate": "02/2025",
+    "finalDate": "11/2025",
+    "description": { "pt": "Atuo no desenvolvimento de soluções automatizadas e manipulação de grandes volumes de dados, utilizando PHP, Python, HTML e PostgreSQL. Trabalho na criação de robôs e automações para otimizar processos, além de contribuir para o front-end de aplicações e a gestão de banco de dados.", "en": "I work on the development of automated solutions and handling large volumes of data using PHP, Python, HTML, and PostgreSQL. I create bots and automations to optimize processes, as well as contribute to the front-end of applications and database management." },
+    "type": { "pt": "Trabalho", "en": "Work" }
+  },
+  {
+    "id": "exp-03",
+    "role": { "pt": "Freelancer - Desenvolvimento Web", "en": "Freelancer - Web Development" },
+    "company": { "pt": "Voogle", "en": "Voogle" },
+    "startDate": "12/2024",
+    "finalDate": "01/2025",
+    "description": { "pt": "Desenvolvi uma página web personalizada para um cliente, atendendo às suas necessidades específicas de design e funcionalidade. Para o desenvolvimento do projeto, utilizei React, TypeScript, Tailwind para criar uma interface responsiva e intuitiva. Entreguei o projeto dentro do prazo estipulado, com alta satisfação do cliente.", "en": "I developed a personalized web page for a client, meeting their specific design and functionality needs. For the project, I used React, TypeScript, and Tailwind to build a responsive and intuitive interface. I delivered the project within the agreed timeframe, achieving high client satisfaction." },
+    "type": { "pt": "Trabalho", "en": "Work" }
+  },
+  {
+    "id": "exp-04",
+    "role": { "pt": "Coordenador da Tesouraria da Obra Jovem Santa Helena", "en": "Treasury Coordinator - Obra Jovem Santa Helena" },
+    "company": { "pt": "Santa Helena", "en": "Santa Helena" },
+    "startDate": "01/2025",
+    "finalDate": "07/2025",
+    "description": { "pt": "Fui o coordenador da Tesouraria da Obra Jovem Santa Helena, responsável pela gestão da tesouraria e financiamento da obra.", "en": "I was the Treasury Coordinator of Obra Jovem Santa Helena, responsible for managing the treasury and financing of the project." },
+    "type": { "pt": "Voluntariado", "en": "Volunteering" }
+  },
+  {
+    "id": "exp-05",
+    "role": { "pt": "Engenharia de Software", "en": "Software Engineering" },
+    "company": { "pt": "PUC Minas", "en": "PUC Minas" },
+    "startDate": "02/2024",
+    "finalDate": "12/2027",
+    "description": { "pt": "Formação orientada a projetos com base sólida em arquitetura, estruturas de dados, bancos de dados e sistemas embarcados. Ênfase em boas práticas (como testes, versionamento e CI/CD), métodos ágeis e fundamentos de IA para construir soluções escaláveis, seguras e prontas para produção.", "en": "Project-oriented education with a solid foundation in architecture, data structures, databases, and embedded systems. Emphasis on best practices (such as testing, version control, and CI/CD), agile methodologies, and AI fundamentals to build scalable, secure, and production-ready solutions." },
+    "type": { "pt": "Estudo", "en": "Study" }
+  },
+  {
+    "id": "exp-06",
+    "role": { "pt": "Coordenador da Perseverança da Obra Jovem Santa Helena", "en": "Perseverance Coordinator - Obra Jovem Santa Helena" },
+    "company": { "pt": "Santa Helena", "en": "Santa Helena" },
+    "startDate": "01/2024",
+    "finalDate": "01/2025",
+    "description": { "pt": "Fui o coordenador da Perseverança da Obra Jovem Santa Helena, responsável pela catequização e formação de jovens católicos.", "en": "I was the Perseverance Coordinator of Obra Jovem Santa Helena, responsible for catechism and the formation of young Catholics." },
+    "type": { "pt": "Voluntariado", "en": "Volunteering" }
+  }
+]
