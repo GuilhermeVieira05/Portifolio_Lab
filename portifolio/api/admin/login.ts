@@ -3,6 +3,11 @@ import { AdminAuth } from "../_lib/auth/AdminAuth";
 import { LoginRateLimiter } from "../_lib/auth/LoginRateLimiter";
 import { getAdminEnv, SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env";
 
+// Best-effort brute-force guard, not a hard guarantee: Vercel serverless
+// instances are ephemeral and requests can land on different warm instances
+// with no shared state, so this mainly slows down naive single-threaded
+// guessing. Acceptable for this project's threat model (single admin, low
+// traffic) — see LoginRateLimiter's own doc comment for the cold-start caveat.
 const rateLimiter = new LoginRateLimiter({
   maxAttempts: 5,
   windowMs: 15 * 60 * 1000,
