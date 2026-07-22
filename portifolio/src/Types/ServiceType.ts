@@ -1,8 +1,7 @@
-import type { ElementType } from "react";
-import type { SvgIconProps } from "@mui/material";
+import type { LocalizedText } from "./LocalizedText";
 
 export interface ServiceItem {
-  icon: ElementType<SvgIconProps>;
-  title: string
-  description: string
+  iconName: string;
+  title: LocalizedText;
+  description: LocalizedText;
 }
