@@ -4,6 +4,7 @@ import { Sobre } from "./pages/Sobre";
 import { Habilidades } from "./pages/Habilidades";
 import { Projetos } from "./pages/Projetos";
 import { Contato } from "./pages/Contato";
+import { AdminLogin } from "./pages/admin/AdminLogin";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/habilidades" element={<Habilidades />} />
             <Route path="/projetos" element={<Projetos />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
           </Routes>
 
         </BrowserRouter>
