@@ -1,3 +1,5 @@
+import { KNOWN_SKILL_ICON_NAMES, KNOWN_SERVICE_ICON_NAMES } from "./knownIconNames";
+
 export class ValidationError extends Error {
   constructor(message: string) {
     super(message);
@@ -90,6 +92,9 @@ export function validateSkill(data: unknown): void {
   requireNonEmptyString(d.id, "id");
   requireNonEmptyString(d.name, "name");
   requireNonEmptyString(d.iconName, "iconName");
+  if (typeof d.iconName === "string" && !KNOWN_SKILL_ICON_NAMES.has(d.iconName)) {
+    throw new ValidationError(`iconName "${d.iconName}" is not a recognized skill icon`);
+  }
   if (typeof d.category !== "string" || !VALID_SKILL_CATEGORIES.has(d.category)) {
     throw new ValidationError(`category must be one of ${[...VALID_SKILL_CATEGORIES].join(", ")}`);
   }
@@ -102,6 +107,9 @@ export function validateService(data: unknown): void {
   const d = asRecord(data, "service");
 
   requireNonEmptyString(d.iconName, "iconName");
+  if (typeof d.iconName === "string" && !KNOWN_SERVICE_ICON_NAMES.has(d.iconName)) {
+    throw new ValidationError(`iconName "${d.iconName}" is not a recognized service icon`);
+  }
   requireLocalizedText(d.title, "title");
   requireLocalizedText(d.description, "description");
 }

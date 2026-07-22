@@ -91,6 +91,10 @@ describe("validateSkill", () => {
       ValidationError
     );
   });
+
+  it("rejects an unrecognized skill iconName", () => {
+    expect(() => validateSkill({ ...valid, iconName: "NotARealIcon" })).toThrow(ValidationError);
+  });
 });
 
 describe("validateService", () => {
@@ -107,5 +111,9 @@ describe("validateService", () => {
   it("rejects a missing iconName", () => {
     const { iconName, ...rest } = valid;
     expect(() => validateService(rest)).toThrow(ValidationError);
+  });
+
+  it("rejects an unrecognized service iconName", () => {
+    expect(() => validateService({ ...valid, iconName: "NotARealIcon" })).toThrow(ValidationError);
   });
 });
