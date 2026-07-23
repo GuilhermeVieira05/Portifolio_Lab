@@ -1,11 +1,11 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { requireAdminSession } from "../_lib/auth/requireAdminSession";
-import { createAdminAuth, createGitHubClient, withGitHubErrorHandling } from "../_lib/adminRouteHelpers";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../_lib/adminRouteHelpers";
 
 const RESUME_PATH = "portifolio/src/assets/curriculo.pdf";
 const MAX_BASE64_LENGTH = 10 * 1024 * 1024; // ~7.5MB de PDF decodificado
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default withErrorHandling(async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
@@ -41,4 +41,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
     res.status(200).json({ ok: true });
   });
-}
+});

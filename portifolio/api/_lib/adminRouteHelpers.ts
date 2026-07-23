@@ -1,3 +1,4 @@
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { AdminAuth } from "./auth/AdminAuth";
 import { GitHubContentClient } from "./github/GitHubContentClient";
 import { getAdminEnv, SESSION_DURATION_SECONDS } from "./env";
@@ -38,4 +39,26 @@ export async function withGitHubErrorHandling(
       error: error instanceof Error ? error.message : "GitHub request failed",
     });
   }
+}
+
+/**
+ * Wraps an entire admin route handler so any uncaught error (most notably a
+ * missing required env var from getAdminEnv(), which throws synchronously
+ * before any auth/GitHub logic runs) produces a JSON 500 response instead of
+ * Vercel's opaque platform error page. The real error is still logged via
+ * console.error for debugging in the Vercel dashboard.
+ */
+export function withErrorHandling(
+  handler: (req: VercelRequest, res: VercelResponse) => Promise<void>
+) {
+  return async (req: VercelRequest, res: VercelResponse) => {
+    try {
+      await handler(req, res);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        error: error instanceof Error ? error.message : "Internal server error",
+      });
+    }
+  };
 }

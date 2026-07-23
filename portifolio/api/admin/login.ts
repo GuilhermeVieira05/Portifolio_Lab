@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { LoginRateLimiter } from "../_lib/auth/LoginRateLimiter";
 import { SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env";
-import { createAdminAuth } from "../_lib/adminRouteHelpers";
+import { createAdminAuth, withErrorHandling } from "../_lib/adminRouteHelpers";
 
 // Best-effort brute-force guard, not a hard guarantee: Vercel serverless
 // instances are ephemeral and requests can land on different warm instances
@@ -19,7 +19,7 @@ function clientKey(req: VercelRequest): string {
   return req.socket?.remoteAddress ?? "unknown";
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default withErrorHandling(async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
@@ -53,4 +53,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `${SESSION_COOKIE_NAME}=${token}; HttpOnly; Secure; SameSite=Strict; Max-Age=${SESSION_DURATION_SECONDS}; Path=/`
   );
   res.status(200).json({ ok: true });
-}
+});

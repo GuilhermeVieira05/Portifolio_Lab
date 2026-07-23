@@ -3,9 +3,9 @@ import { requireAdminSession } from "../../_lib/auth/requireAdminSession";
 import { JsonResourceRepository } from "../../_lib/data/JsonResourceRepository";
 import { RESOURCE_REGISTRY, isResourceName } from "../../_lib/data/resourceRegistry";
 import { ValidationError } from "../../_lib/validation/validators";
-import { createAdminAuth, createGitHubClient, withGitHubErrorHandling } from "../../_lib/adminRouteHelpers";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../../_lib/adminRouteHelpers";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default withErrorHandling(async function handler(req: VercelRequest, res: VercelResponse) {
   const auth = createAdminAuth();
 
   if (!(await requireAdminSession(req, auth))) {
@@ -66,4 +66,4 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   res.status(405).json({ error: "Method not allowed" });
-}
+});

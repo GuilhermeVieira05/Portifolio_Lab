@@ -24,7 +24,7 @@ export const AdminLogin: React.FC = () => {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", bgcolor: "#2c2c2c" }}>
+    <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", bgcolor: "#2c2c2c" }}>
       <Container maxWidth="xs">
         <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Typography variant="h5" sx={{ color: "#fff" }}>Admin</Typography>
