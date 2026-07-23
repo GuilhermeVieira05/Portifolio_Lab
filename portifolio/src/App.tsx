@@ -12,6 +12,7 @@ import { ProjectsAdmin } from "./pages/admin/ProjectsAdmin";
 import { SkillsAdmin } from "./pages/admin/SkillsAdmin";
 import { ServicesAdmin } from "./pages/admin/ServicesAdmin";
 import { UserAdmin } from "./pages/admin/UserAdmin";
+import { AdminThemeProvider } from "./pages/admin/AdminThemeProvider";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function App() {
@@ -33,13 +34,13 @@ function App() {
             <Route path="/habilidades" element={<Habilidades />} />
             <Route path="/projetos" element={<Projetos />} />
             <Route path="/contato" element={<Contato />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-            <Route path="/admin/experiences" element={<AdminRoute><ExperiencesAdmin /></AdminRoute>} />
-            <Route path="/admin/projects" element={<AdminRoute><ProjectsAdmin /></AdminRoute>} />
-            <Route path="/admin/skills" element={<AdminRoute><SkillsAdmin /></AdminRoute>} />
-            <Route path="/admin/services" element={<AdminRoute><ServicesAdmin /></AdminRoute>} />
-            <Route path="/admin/user" element={<AdminRoute><UserAdmin /></AdminRoute>} />
+            <Route path="/admin/login" element={<AdminThemeProvider><AdminLogin /></AdminThemeProvider>} />
+            <Route path="/admin" element={<AdminThemeProvider><AdminRoute><AdminDashboard /></AdminRoute></AdminThemeProvider>} />
+            <Route path="/admin/experiences" element={<AdminThemeProvider><AdminRoute><ExperiencesAdmin /></AdminRoute></AdminThemeProvider>} />
+            <Route path="/admin/projects" element={<AdminThemeProvider><AdminRoute><ProjectsAdmin /></AdminRoute></AdminThemeProvider>} />
+            <Route path="/admin/skills" element={<AdminThemeProvider><AdminRoute><SkillsAdmin /></AdminRoute></AdminThemeProvider>} />
+            <Route path="/admin/services" element={<AdminThemeProvider><AdminRoute><ServicesAdmin /></AdminRoute></AdminThemeProvider>} />
+            <Route path="/admin/user" element={<AdminThemeProvider><AdminRoute><UserAdmin /></AdminRoute></AdminThemeProvider>} />
           </Routes>
 
         </BrowserRouter>

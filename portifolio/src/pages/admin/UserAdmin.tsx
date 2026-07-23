@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, Container, Typography, Button, TextField, Input } from "@mui/material";
+import { Box, Typography, Button, TextField, Paper, Alert, Divider } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { fetchUser, saveUser, uploadResume, AdminApiError } from "../../api/adminApi";
+import { AdminLayout } from "./AdminLayout";
 import { LocalizedTextField } from "./components/LocalizedTextField";
+import { useSaveFeedback } from "./hooks/useSaveFeedback";
 import type { User } from "../../Types/userType";
 import type { LocalizedText } from "../../Types/LocalizedText";
 
@@ -36,6 +40,7 @@ export const UserAdmin: React.FC = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [resumeStatus, setResumeStatus] = useState<string | null>(null);
+  const { justSaved, notifySaved } = useSaveFeedback();
 
   useEffect(() => {
     fetchUser<EditableUser>()
@@ -56,6 +61,7 @@ export const UserAdmin: React.FC = () => {
     setError(null);
     try {
       await saveUser(user);
+      notifySaved();
     } catch (err) {
       setError(err instanceof AdminApiError ? err.message : "Erro ao salvar");
     } finally {
@@ -70,40 +76,77 @@ export const UserAdmin: React.FC = () => {
     try {
       const base64 = await fileToBase64(file);
       await uploadResume(base64);
-      setResumeStatus("Currículo atualizado.");
+      setResumeStatus("Currículo atualizado com sucesso.");
     } catch (err) {
       setResumeStatus(err instanceof AdminApiError ? err.message : "Erro ao enviar currículo");
     }
   };
 
-  if (loading) return <Container sx={{ py: 4 }}>Carregando...</Container>;
-
   return (
-    <Container sx={{ py: 4, display: "flex", flexDirection: "column", gap: 3 }}>
-      <Typography variant="h4">Dados pessoais</Typography>
-      {error && <Typography color="error">{error}</Typography>}
+    <AdminLayout title="Dados pessoais">
+      {loading ? (
+        <Typography color="text.secondary">Carregando...</Typography>
+      ) : (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+          {error && <Alert severity="error">{error}</Alert>}
+          {justSaved && <Alert severity="success">Alterações salvas.</Alert>}
 
-      <TextField label="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
-      <LocalizedTextField label="Descrição" value={user.desc} onChange={(v) => setUser({ ...user, desc: v })} multiline />
-      <TextField label="Email" value={user.emailName} onChange={(e) => setUser({ ...user, emailName: e.target.value })} />
-      <TextField label="Telefone" value={user.telefone} onChange={(e) => setUser({ ...user, telefone: e.target.value })} />
-      <TextField label="LinkedIn (usuário)" value={user.linkedinName} onChange={(e) => setUser({ ...user, linkedinName: e.target.value })} />
-      <TextField label="GitHub (usuário)" value={user.githubName} onChange={(e) => setUser({ ...user, githubName: e.target.value })} />
+          <Paper sx={{ p: 3, border: "1px solid rgba(255,255,255,0.08)" }}>
+            <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+              Informações básicas
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <TextField label="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} fullWidth />
+              <LocalizedTextField label="Descrição (bio)" value={user.desc} onChange={(v) => setUser({ ...user, desc: v })} multiline />
+              <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
+                <TextField label="Email" value={user.emailName} onChange={(e) => setUser({ ...user, emailName: e.target.value })} fullWidth />
+                <TextField label="Telefone" value={user.telefone} onChange={(e) => setUser({ ...user, telefone: e.target.value })} fullWidth />
+              </Box>
+              <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
+                <TextField label="Usuário do LinkedIn" value={user.linkedinName} onChange={(e) => setUser({ ...user, linkedinName: e.target.value })} fullWidth />
+                <TextField label="Usuário do GitHub" value={user.githubName} onChange={(e) => setUser({ ...user, githubName: e.target.value })} fullWidth />
+              </Box>
+            </Box>
+          </Paper>
 
-      <Typography variant="h6">Características (palavras animadas do Hero)</Typography>
-      {user.caracteristicas.map((c, i) => (
-        <LocalizedTextField key={i} label={`Característica ${i + 1}`} value={c} onChange={(v) => updateCaracteristica(i, v)} />
-      ))}
+          <Paper sx={{ p: 3, border: "1px solid rgba(255,255,255,0.08)" }}>
+            <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 0.5 }}>
+              Características
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Palavras que aparecem animadas na tela inicial (ex: "Fullstack", "Backend")
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              {user.caracteristicas.map((c, i) => (
+                <LocalizedTextField key={i} label={`Característica ${i + 1}`} value={c} onChange={(v) => updateCaracteristica(i, v)} />
+              ))}
+            </Box>
+          </Paper>
 
-      <Typography variant="h6">Currículo</Typography>
-      <Input type="file" inputProps={{ accept: "application/pdf" }} onChange={handleResumeUpload} />
-      {resumeStatus && <Typography variant="body2">{resumeStatus}</Typography>}
+          <Paper sx={{ p: 3, border: "1px solid rgba(255,255,255,0.08)" }}>
+            <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
+              Currículo (PDF)
+            </Typography>
+            <Button variant="outlined" component="label" startIcon={<UploadFileIcon />}>
+              Enviar novo currículo
+              <input type="file" accept="application/pdf" hidden onChange={handleResumeUpload} />
+            </Button>
+            {resumeStatus && (
+              <Typography variant="body2" sx={{ mt: 1.5 }} color="text.secondary">
+                {resumeStatus}
+              </Typography>
+            )}
+          </Paper>
 
-      <Box>
-        <Button variant="contained" disabled={saving} onClick={handleSave}>
-          {saving ? "Salvando..." : "Salvar"}
-        </Button>
-      </Box>
-    </Container>
+          <Divider sx={{ borderColor: "rgba(255,255,255,0.08)" }} />
+
+          <Box>
+            <Button variant="contained" startIcon={<SaveIcon />} disabled={saving} onClick={handleSave}>
+              {saving ? "Salvando..." : "Salvar alterações"}
+            </Button>
+          </Box>
+        </Box>
+      )}
+    </AdminLayout>
   );
 };

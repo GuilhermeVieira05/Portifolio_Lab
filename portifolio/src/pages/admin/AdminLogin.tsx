@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, Container, TextField, Typography, Alert } from "@mui/material";
+import { Box, Button, Container, TextField, Typography, Alert, Paper, Avatar } from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useNavigate } from "react-router-dom";
 import { login, AdminApiError } from "../../api/adminApi";
 
@@ -24,11 +25,50 @@ export const AdminLogin: React.FC = () => {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", bgcolor: "#2c2c2c" }}>
-      <Container maxWidth="xs">
-        <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <Typography variant="h5" sx={{ color: "#fff" }}>Admin</Typography>
-          {error && <Alert severity="error">{error}</Alert>}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
+        px: 2,
+      }}
+    >
+      <Container maxWidth="xs" disableGutters>
+        <Paper
+          elevation={0}
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            p: { xs: 3, sm: 4 },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 2.5,
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <Avatar sx={{ bgcolor: "primary.main", width: 48, height: 48 }}>
+            <LockOutlinedIcon />
+          </Avatar>
+
+          <Box sx={{ textAlign: "center" }}>
+            <Typography variant="h5" fontWeight={700}>
+              Área administrativa
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Entre com a senha para gerenciar o conteúdo do site
+            </Typography>
+          </Box>
+
+          {error && (
+            <Alert severity="error" sx={{ width: "100%" }}>
+              {error}
+            </Alert>
+          )}
+
           <TextField
             type="password"
             label="Senha"
@@ -36,12 +76,18 @@ export const AdminLogin: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             autoFocus
             fullWidth
-            sx={{ bgcolor: "#fff", borderRadius: 1 }}
           />
-          <Button type="submit" variant="contained" disabled={loading || password.length === 0}>
+
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            fullWidth
+            disabled={loading || password.length === 0}
+          >
             {loading ? "Entrando..." : "Entrar"}
           </Button>
-        </Box>
+        </Paper>
       </Container>
     </Box>
   );
