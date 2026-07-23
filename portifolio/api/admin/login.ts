@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { AdminAuth } from "../_lib/auth/AdminAuth";
 import { LoginRateLimiter } from "../_lib/auth/LoginRateLimiter";
-import { getAdminEnv, SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env";
+import { SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env";
+import { createAdminAuth } from "../_lib/adminRouteHelpers";
 
 // Best-effort brute-force guard, not a hard guarantee: Vercel serverless
 // instances are ephemeral and requests can land on different warm instances
@@ -37,12 +37,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const env = getAdminEnv();
-  const auth = new AdminAuth({
-    adminPassword: env.adminPassword,
-    jwtSecret: env.jwtSecret,
-    sessionDurationSeconds: SESSION_DURATION_SECONDS,
-  });
+  const auth = createAdminAuth();
 
   if (!auth.verifyPassword(password)) {
     rateLimiter.recordFailedAttempt(key);

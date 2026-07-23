@@ -1,19 +1,12 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { AdminAuth } from "../../_lib/auth/AdminAuth";
 import { requireAdminSession } from "../../_lib/auth/requireAdminSession";
-import { GitHubContentClient } from "../../_lib/github/GitHubContentClient";
 import { JsonResourceRepository } from "../../_lib/data/JsonResourceRepository";
 import { RESOURCE_REGISTRY, isResourceName } from "../../_lib/data/resourceRegistry";
 import { ValidationError } from "../../_lib/validation/validators";
-import { getAdminEnv, SESSION_DURATION_SECONDS } from "../../_lib/env";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling } from "../../_lib/adminRouteHelpers";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const env = getAdminEnv();
-  const auth = new AdminAuth({
-    adminPassword: env.adminPassword,
-    jwtSecret: env.jwtSecret,
-    sessionDurationSeconds: SESSION_DURATION_SECONDS,
-  });
+  const auth = createAdminAuth();
 
   if (!(await requireAdminSession(req, auth))) {
     res.status(401).json({ error: "Not authenticated" });
@@ -28,17 +21,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const definition = RESOURCE_REGISTRY[resource];
-  const client = new GitHubContentClient({
-    owner: env.githubOwner,
-    repo: env.githubRepo,
-    token: env.githubToken,
-    branch: env.githubBranch,
-  });
+  const client = createGitHubClient();
   const repository = new JsonResourceRepository<unknown>(client, definition.path);
 
   if (req.method === "GET") {
-    const items = await repository.list();
-    res.status(200).json({ items });
+    await withGitHubErrorHandling(res, async () => {
+      const items = await repository.list();
+      res.status(200).json({ items });
+    });
     return;
   }
 
@@ -68,8 +58,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       throw error;
     }
 
-    await repository.replaceAll(items, `chore: update ${resource} via admin`);
-    res.status(200).json({ ok: true });
+    await withGitHubErrorHandling(res, async () => {
+      await repository.replaceAll(items, `chore: update ${resource} via admin`);
+      res.status(200).json({ ok: true });
+    });
     return;
   }
 
