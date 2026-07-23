@@ -1,4 +1,4 @@
-import type { GitHubContentClient } from "../github/GitHubContentClient";
+import type { GitHubContentClient } from "../github/GitHubContentClient.js";
 
 /**
  * Lê/escreve um array JSON completo em um único arquivo do repositório,

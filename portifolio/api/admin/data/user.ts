@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdminSession } from "../../_lib/auth/requireAdminSession";
-import { validateUser, ValidationError } from "../../_lib/validation/validators";
-import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../../_lib/adminRouteHelpers";
+import { requireAdminSession } from "../../_lib/auth/requireAdminSession.js";
+import { validateUser, ValidationError } from "../../_lib/validation/validators.js";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../../_lib/adminRouteHelpers.js";
 
 const USER_JSON_PATH = "portifolio/src/data/json/user.json";
 

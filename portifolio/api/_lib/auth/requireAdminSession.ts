@@ -1,6 +1,6 @@
 import type { VercelRequest } from "@vercel/node";
-import type { AdminAuth } from "./AdminAuth";
-import { SESSION_COOKIE_NAME } from "../env";
+import type { AdminAuth } from "./AdminAuth.js";
+import { SESSION_COOKIE_NAME } from "../env.js";
 
 function parseCookies(header: string | undefined): Record<string, string> {
   if (!header) return {};

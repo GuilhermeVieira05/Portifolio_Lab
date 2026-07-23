@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { LoginRateLimiter } from "../_lib/auth/LoginRateLimiter";
-import { SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env";
-import { createAdminAuth, withErrorHandling } from "../_lib/adminRouteHelpers";
+import { LoginRateLimiter } from "../_lib/auth/LoginRateLimiter.js";
+import { SESSION_COOKIE_NAME, SESSION_DURATION_SECONDS } from "../_lib/env.js";
+import { createAdminAuth, withErrorHandling } from "../_lib/adminRouteHelpers.js";
 
 // Best-effort brute-force guard, not a hard guarantee: Vercel serverless
 // instances are ephemeral and requests can land on different warm instances

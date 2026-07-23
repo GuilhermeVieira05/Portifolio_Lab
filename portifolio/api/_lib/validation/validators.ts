@@ -1,4 +1,4 @@
-import { KNOWN_SKILL_ICON_NAMES, KNOWN_SERVICE_ICON_NAMES } from "./knownIconNames";
+import { KNOWN_SKILL_ICON_NAMES, KNOWN_SERVICE_ICON_NAMES } from "./knownIconNames.js";
 
 export class ValidationError extends Error {
   constructor(message: string) {

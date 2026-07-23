@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdminSession } from "../_lib/auth/requireAdminSession";
-import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../_lib/adminRouteHelpers";
+import { requireAdminSession } from "../_lib/auth/requireAdminSession.js";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../_lib/adminRouteHelpers.js";
 
 const RESUME_PATH = "portifolio/src/assets/curriculo.pdf";
 const MAX_BASE64_LENGTH = 10 * 1024 * 1024; // ~7.5MB de PDF decodificado

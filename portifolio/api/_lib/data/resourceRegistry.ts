@@ -1,4 +1,4 @@
-import { validateExperience, validateProject, validateSkill, validateService } from "../validation/validators";
+import { validateExperience, validateProject, validateSkill, validateService } from "../validation/validators.js";
 
 export type ResourceName = "experiences" | "projects" | "skills" | "services";
 

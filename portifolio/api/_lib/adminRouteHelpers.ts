@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { AdminAuth } from "./auth/AdminAuth";
-import { GitHubContentClient } from "./github/GitHubContentClient";
-import { getAdminEnv, SESSION_DURATION_SECONDS } from "./env";
+import { AdminAuth } from "./auth/AdminAuth.js";
+import { GitHubContentClient } from "./github/GitHubContentClient.js";
+import { getAdminEnv, SESSION_DURATION_SECONDS } from "./env.js";
 
 export function createAdminAuth(): AdminAuth {
   const env = getAdminEnv();

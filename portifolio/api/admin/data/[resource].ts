@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdminSession } from "../../_lib/auth/requireAdminSession";
-import { JsonResourceRepository } from "../../_lib/data/JsonResourceRepository";
-import { RESOURCE_REGISTRY, isResourceName } from "../../_lib/data/resourceRegistry";
-import { ValidationError } from "../../_lib/validation/validators";
-import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../../_lib/adminRouteHelpers";
+import { requireAdminSession } from "../../_lib/auth/requireAdminSession.js";
+import { JsonResourceRepository } from "../../_lib/data/JsonResourceRepository.js";
+import { RESOURCE_REGISTRY, isResourceName } from "../../_lib/data/resourceRegistry.js";
+import { ValidationError } from "../../_lib/validation/validators.js";
+import { createAdminAuth, createGitHubClient, withGitHubErrorHandling, withErrorHandling } from "../../_lib/adminRouteHelpers.js";
 
 export default withErrorHandling(async function handler(req: VercelRequest, res: VercelResponse) {
   const auth = createAdminAuth();
