@@ -57,11 +57,13 @@ export const ExperiencesAdmin: React.FC = () => {
               label="Início (MM/AAAA)"
               value={item.startDate}
               onChange={(e) => updateItem(index, { ...item, startDate: e.target.value })}
+              helperText="Formato: MM/AAAA, ex. 01/2025"
             />
             <TextField
               label="Fim (MM/AAAA, vazio = atual)"
               value={item.finalDate ?? ""}
               onChange={(e) => updateItem(index, { ...item, finalDate: e.target.value || null })}
+              helperText="Formato: MM/AAAA, ou vazio"
             />
           </Box>
           <LocalizedTextField

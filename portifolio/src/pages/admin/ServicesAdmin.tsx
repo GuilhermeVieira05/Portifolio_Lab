@@ -18,7 +18,7 @@ export const ServicesAdmin: React.FC = () => {
     setDraft((prev) => prev.map((item, i) => (i === index ? next : item)));
   };
   const removeItem = (index: number) => setDraft((prev) => prev.filter((_, i) => i !== index));
-  const addItem = () => setDraft((prev) => [...prev, EMPTY]);
+  const addItem = () => setDraft((prev) => [...prev, { ...EMPTY }]);
 
   if (loading) return <Container sx={{ py: 4 }}>Carregando...</Container>;
 
