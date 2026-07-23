@@ -5,6 +5,8 @@ import { Habilidades } from "./pages/Habilidades";
 import { Projetos } from "./pages/Projetos";
 import { Contato } from "./pages/Contato";
 import { AdminLogin } from "./pages/admin/AdminLogin";
+import { AdminDashboard } from "./pages/admin/AdminDashboard";
+import { AdminRoute } from "./pages/admin/AdminRoute";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
             <Route path="/projetos" element={<Projetos />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
           </Routes>
 
         </BrowserRouter>
