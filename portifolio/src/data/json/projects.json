@@ -6,7 +6,7 @@
     "languages": ["Next.Js", "CSS3", "TypeScript", "GraphQL", "Golang", "PostgreSQL", "Aws", "Docker", "Python", "WebSocket", "API-Gateway", "Tailwind", "RabbitMQ", "Terraform"],
     "type": "Sites",
     "status": { "pt": "Em Andamento", "en": "In Progress" },
-    "image": "src/assets/projectsImages/login-ajunta.png",
+    "image": "/projectsImages/login-ajunta.png",
     "date": "01/05/2023",
     "siteLink": "https://tinyurl.com/ajuntaa",
     "gitHubLink": "https://github.com/GuilhermeVieira05/pmg-es-2025-2-ti4-3170100-ajunta"
@@ -18,12 +18,12 @@
     "languages": ["React", "TypeScript", "CSS3", "Langchain", "Gemini", "Python", "Fast API", "SQLite"],
     "type": "Outros",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/tradutor.png",
+    "image": "/projectsImages/tradutor.png",
     "highlight": true,
     "date": "01/05/2023",
     "siteLink": "",
     "gitHubLink": "https://github.com/GuilhermeVieira05/Tradutor_IA",
-    "video": "src/assets/videos/tradutorIA.mp4"
+    "video": "/videos/tradutorIA.mp4"
   },
   {
     "id": "2",
@@ -32,7 +32,7 @@
     "languages": ["React", "TypeScript", "Langchain", "Python", "Fast API", "SQLite", "Gemini"],
     "type": "Outros",
     "status": { "pt": "Em Andamento", "en": "In Progress" },
-    "image": "src/assets/projectsImages/ComingSoon.jpg",
+    "image": "/projectsImages/ComingSoon.jpg",
     "highlight": true,
     "date": "01/05/2023"
   },
@@ -43,10 +43,10 @@
     "languages": ["React", "TypeScript", "Langchain", "Gemini", "Python", "Fast API", "Material UI"],
     "type": "Sites",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/portifolio.png",
+    "image": "/projectsImages/portifolio.png",
     "highlight": true,
     "date": "01/05/2023",
-    "video": "src/assets/videos/portifolio.mp4",
+    "video": "/videos/portifolio.mp4",
     "gitHubLink": "https://github.com/GuilhermeVieira05/Portifolio_Lab"
   },
   {
@@ -56,9 +56,9 @@
     "languages": ["React", "JavaScript", "Java", "SpringBoot", "PostgreSQL"],
     "type": "Sites",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/gagro.png",
+    "image": "/projectsImages/gagro.png",
     "date": "01/05/2023",
-    "video": "src/assets/videos/gagro.mp4"
+    "video": "/videos/gagro.mp4"
   },
   {
     "id": "5",
@@ -67,9 +67,9 @@
     "languages": ["HTML5", "CSS3", "JavaScript"],
     "type": "Sites",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/bbf.png",
+    "image": "/projectsImages/bbf.png",
     "date": "01/05/2023",
-    "video": "src/assets/videos/bbf.mp4"
+    "video": "/videos/bbf.mp4"
   },
   {
     "id": "6",
@@ -78,9 +78,9 @@
     "languages": ["Next.Js", "SCSS", "TypeScript", "Node.js", "Express.js", "Prisma", "PostgreSQL"],
     "type": "Sites",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/Optima.jpg",
+    "image": "/projectsImages/Optima.jpg",
     "date": "01/05/2023",
-    "video": "src/assets/videos/optima.mp4"
+    "video": "/videos/optima.mp4"
   },
   {
     "id": "7",
@@ -89,7 +89,7 @@
     "languages": ["HTML5", "CSS3", "JavaScript", "GSAP"],
     "type": "E-Commerce",
     "status": { "pt": "Em Andamento", "en": "In Progress" },
-    "image": "src/assets/projectsImages/ComingSoon.jpg",
+    "image": "/projectsImages/ComingSoon.jpg",
     "date": "01/05/2023"
   },
   {
@@ -99,8 +99,8 @@
     "languages": ["React", "Tailwind", "TypeScript"],
     "type": "Landing Pages",
     "status": { "pt": "Finalizado", "en": "Finished" },
-    "image": "src/assets/projectsImages/voogle.png",
+    "image": "/projectsImages/voogle.png",
     "date": "01/05/2023",
-    "video": "src/assets/videos/voogle.mp4"
+    "video": "/videos/voogle.mp4"
   }
 ]
