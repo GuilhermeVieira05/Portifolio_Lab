@@ -69,3 +69,17 @@ export async function uploadResume(fileBase64: string): Promise<void> {
   });
   await parseJsonOrThrow(response);
 }
+
+export async function uploadProjectMedia(
+  fileBase64: string,
+  filename: string,
+  kind: "image" | "video"
+): Promise<{ url: string }> {
+  const response = await fetch("/api/admin/upload-project-media", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ fileBase64, filename, kind }),
+  });
+  return parseJsonOrThrow(response);
+}

@@ -3,11 +3,31 @@ import { Box, Typography, Button, TextField, MenuItem, IconButton, Paper, Chip, 
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from "@mui/icons-material/Save";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { useAdminResource } from "./hooks/useAdminResource";
 import { useSaveFeedback } from "./hooks/useSaveFeedback";
 import { AdminLayout } from "./AdminLayout";
 import { LocalizedTextField } from "./components/LocalizedTextField";
+import { uploadProjectMedia, AdminApiError } from "../../api/adminApi";
 import type { CardType } from "../../Types/cardType";
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve((reader.result as string).split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function slugify(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 const TYPES = ["Sites", "Landing Pages", "Aplicativos", "E-Commerce", "Outros"];
 
@@ -25,6 +45,7 @@ export const ProjectsAdmin: React.FC = () => {
   const { items, loading, saving, error, save } = useAdminResource<CardType>("projects");
   const { justSaved, notifySaved } = useSaveFeedback();
   const [draft, setDraft] = useState<CardType[]>([]);
+  const [mediaStatus, setMediaStatus] = useState<Record<number, string>>({});
 
   useEffect(() => setDraft(items), [items]);
 
@@ -40,6 +61,28 @@ export const ProjectsAdmin: React.FC = () => {
       notifySaved();
     } catch {
       // error state is already set by useAdminResource
+    }
+  };
+
+  const handleMediaUpload = async (
+    index: number,
+    kind: "image" | "video",
+    file: File
+  ) => {
+    setMediaStatus((prev) => ({ ...prev, [index]: "Enviando..." }));
+    try {
+      const base64 = await fileToBase64(file);
+      const ext = file.name.split(".").pop() ?? "";
+      const projectId = draft[index].id || `proj-${Date.now()}`;
+      const filename = `${slugify(projectId)}.${ext}`;
+      const { url } = await uploadProjectMedia(base64, filename, kind);
+      updateItem(index, { ...draft[index], [kind]: url });
+      setMediaStatus((prev) => ({ ...prev, [index]: "Enviado." }));
+    } catch (err) {
+      setMediaStatus((prev) => ({
+        ...prev,
+        [index]: err instanceof AdminApiError ? err.message : "Erro ao enviar arquivo",
+      }));
     }
   };
 
@@ -119,18 +162,77 @@ export const ProjectsAdmin: React.FC = () => {
                   onChange={(e) => updateItem(index, { ...item, gitHubLink: e.target.value })}
                   fullWidth
                 />
-                <TextField
-                  label="Caminho da imagem (asset já existente no projeto)"
-                  value={item.image ?? ""}
-                  onChange={(e) => updateItem(index, { ...item, image: e.target.value })}
-                  fullWidth
-                />
-                <TextField
-                  label="Caminho do vídeo (asset já existente no projeto)"
-                  value={item.video ?? ""}
-                  onChange={(e) => updateItem(index, { ...item, video: e.target.value })}
-                  fullWidth
-                />
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <Typography variant="subtitle2" color="text.secondary">Imagem de capa</Typography>
+                  {item.image && (
+                    <Box
+                      component="img"
+                      src={item.image}
+                      alt=""
+                      sx={{ maxWidth: 240, maxHeight: 140, objectFit: "cover", borderRadius: 1, border: "1px solid rgba(255,255,255,0.08)" }}
+                    />
+                  )}
+                  <Box sx={{ display: "flex", gap: 2, alignItems: "center", flexWrap: "wrap" }}>
+                    <Button variant="outlined" component="label" size="small" startIcon={<UploadFileIcon />}>
+                      Enviar imagem
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/gif,image/webp"
+                        hidden
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleMediaUpload(index, "image", file);
+                        }}
+                      />
+                    </Button>
+                    <TextField
+                      label="ou caminho manual"
+                      value={item.image ?? ""}
+                      onChange={(e) => updateItem(index, { ...item, image: e.target.value })}
+                      size="small"
+                      sx={{ minWidth: 220 }}
+                    />
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <Typography variant="subtitle2" color="text.secondary">Vídeo (opcional)</Typography>
+                  {item.video && (
+                    <Box
+                      component="video"
+                      src={item.video}
+                      controls
+                      sx={{ maxWidth: 240, maxHeight: 140, borderRadius: 1, border: "1px solid rgba(255,255,255,0.08)" }}
+                    />
+                  )}
+                  <Box sx={{ display: "flex", gap: 2, alignItems: "center", flexWrap: "wrap" }}>
+                    <Button variant="outlined" component="label" size="small" startIcon={<UploadFileIcon />}>
+                      Enviar vídeo
+                      <input
+                        type="file"
+                        accept="video/mp4,video/webm,video/quicktime"
+                        hidden
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleMediaUpload(index, "video", file);
+                        }}
+                      />
+                    </Button>
+                    <TextField
+                      label="ou caminho manual"
+                      value={item.video ?? ""}
+                      onChange={(e) => updateItem(index, { ...item, video: e.target.value })}
+                      size="small"
+                      sx={{ minWidth: 220 }}
+                    />
+                  </Box>
+                </Box>
+
+                {mediaStatus[index] && (
+                  <Typography variant="body2" color="text.secondary">
+                    {mediaStatus[index]}
+                  </Typography>
+                )}
               </Box>
             </Paper>
           ))}
